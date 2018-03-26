@@ -13,22 +13,21 @@ var team_introduction = {
 
   view_image: function(className){
     $(className).on('change', function(){
-      var id = this.id;
-      if (typeof (FileReader) != "undefined") {
+      if (typeof (FileReader) != 'undefined') {
         var bar = $(this).next();
         var image_holder = bar;
         image_holder.empty();
         var reader = new FileReader();
         reader.onload = function (e) {
-          $("<img />", {
-            "src": e.target.result,
-            "class": "thumb-image"
+          $('<img />', {
+            'src': e.target.result,
+            'class': 'thumb-image'
           }).appendTo(image_holder);
         };
         image_holder.show();
         reader.readAsDataURL($(this)[0].files[0]);
       } else {
-        alert("This browser does not support FileReader.");
+        alert(I18n.t('browser_not_support'));
       }
     });
   },
@@ -47,6 +46,22 @@ var team_introduction = {
     return new FormData($(id)[0]);
   },
 
+  swal_init: function (title) {
+    return swal({
+      title: title,
+      text: I18n.t('cant_revert'),
+      type: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: I18n.t('confirm_create'),
+      cancelButtonText: I18n.t('cancel_create'),
+      confirmButtonClass: 'btn btn-success',
+      cancelButtonClass: 'btn btn-danger',
+      buttonsStyling: true
+    });
+  },
+
   create_team_introduction: function () {
     $('.team_introduction form').on('submit', function(e) {
       e.preventDefault();
@@ -55,27 +70,35 @@ var team_introduction = {
       var index = parseInt(parent_name.substr(parent_name.length - 1));
       var parent_class = '.'+ parent_name;
       var tr = '.team_introduction_' + (index+1).toString();
-      $.ajax({
-        dataType: 'json',
-        contentType: false,
-        processData: false,
-        url: $('.new_team_introduction').attr('action'),
-        method: 'post',
-        data: formData,
-        success: function() {
-          if (index != 3) {
-            alert(I18n.t('employer.team_introductions.success'));
-            $(parent_class).slideUp();
-            $(tr).show();
-          }
-          else {
+      team_introduction
+        .swal_init(I18n.t('employer.team_introductions.create_confirm')).then(function(){
+          $.ajax({
+            dataType: 'json',
+            contentType: false,
+            processData: false,
+            url: $('.new_team_introduction').attr('action'),
+            method: 'post',
+            data: formData,
+            success: function() {
+              swal('Created!', I18n.t('employer.team_introductions.success'), 'success');
+              $(parent_class).slideUp();
+              $(tr).show();
+            },
+            error: function(){
+              swal('Failed!', I18n.t('employer.team_introductions.not_found'), 'error');
+              $('.team_introduction').find('input[type="submit"]').attr('disabled', false);
+            }
+          });
+        }, function (dismiss) {
+          if (dismiss === 'cancel') {
+            swal(
+            I18n.t('cancelled'),
+            I18n.t('safe')+' :)',
+            'error'
+          );
             $('.team_introduction').find('input[type="submit"]').attr('disabled', false);
           }
-        },
-        error: function(){
-          alert(I18n.t('employer.team_introductions.not_found'));
-        }
-      });
+        });
     });
   }
 };

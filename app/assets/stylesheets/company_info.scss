@@ -2,7 +2,7 @@
 
 .static-main-body {
   .fieldset {
-    padding: 20px;
+    padding: 10px;
 
     .text-area {
       height: 200px;
@@ -38,4 +38,27 @@
 
 .container-custom {
   margin: 0 20px;
+}
+
+.share-company {
+  float: left;
+  margin-left: 165px;
+  margin-top: 10px;
+}
+
+.company-tab {
+  border: 0 !important;
+}
+
+.container {
+  .fix-avata-company {
+    background: none;
+    border: 0;
+  }
+}
+
+.cover-image {
+  .company-cover {
+    height: 379px;
+  }
 }

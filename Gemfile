@@ -5,6 +5,10 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+source "https://rails-assets.org" do
+  gem "rails-assets-datetimepicker"
+end
+
 gem "rails", "~> 5.0.2"
 gem "puma", "~> 3.0"
 gem "sass-rails", "~> 5.0"
@@ -13,7 +17,7 @@ gem "coffee-rails", "~> 4.2"
 gem "jquery-rails"
 gem "turbolinks", "~> 5"
 gem "jbuilder", "~> 2.5"
-gem "pg"
+gem "mysql2", ">= 0.3.18", "< 0.5"
 gem "config"
 gem "kaminari"
 gem "bootstrap-kaminari-views"
@@ -37,13 +41,27 @@ gem "ransack"
 gem "rails-i18n"
 gem "redcarpet"
 gem "cocoon"
-gem "pygments.rb", "~> 0.6.3"
+gem "coderay"
 gem "dropzonejs-rails"
 gem "paranoia"
 gem "geocoder"
 gem "public_activity"
 gem "acts-as-taggable-on"
 gem "i18n-js", ">= 3.0.0.rc11"
+gem "rails-assets-sweetalert2", source: "https://rails-assets.org"
+gem "sweet-alert2-rails"
+gem "valid_url"
+gem "roo"
+gem "acts_as_follower", github: "tcocca/acts_as_follower"
+gem "has_friendship"
+gem "figaro"
+gem "validates_timeliness"
+gem "ckeditor"
+gem "font-awesome-sass", "~> 4.7.0"
+gem "omniauth-hrsystem",
+  git: "https://github.com/framgia-education/omniauth-hrsystem.git"
+gem "bootstrap-datepicker-rails"
+gem "searchkick"
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 3.0"
 # Use ActiveModel has_secure_password
@@ -73,19 +91,23 @@ end
 group :test do
   gem "rspec-collection_matchers"
   gem "shoulda-matchers", "~> 3.0"
-  gem "database_cleaner", "~> 1.5"
+  gem "database_cleaner"
   gem "rubocop", "0.47.1", require: false
   gem "rubocop-checkstyle_formatter", require: false
   gem "scss_lint", require: false
   gem "scss_lint_reporter_checkstyle", require: false
   gem "rails_best_practices"
   gem "brakeman", require: false
-  gem "eslint-rails"
+  gem "eslint-rails", git: "https://github.com/octoberstorm/eslint-rails"
   gem "bundler-audit"
   gem "reek"
   gem "rails-controller-testing"
   gem "simplecov", require: false
   gem "rspec-activemodel-mocks"
+  gem "webmock"
+  gem "capybara"
+  gem "selenium-webdriver"
+  gem "chromedriver-helper"
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

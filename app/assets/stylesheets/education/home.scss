@@ -1,8 +1,27 @@
 @import 'variables/color';
+@import 'variables/background_image';
 
-.standard-logo img {
-  height: 100px;
-  width: 226px;
+.edu-standard-logo-custom,
+.edu-retina-logo-custom {
+  width: 126px;
+}
+
+.edu-standard-logo-custom img,
+.edu-retina-logo-custom img {
+  height: 100%;
+  object-fit: scale-down;
+  width: 100%;
+}
+
+.edu-logo-custom {
+  margin-right: 0 !important;
+  padding-right: 0 !important;
+}
+
+.edu-header-wrap-custom,
+.edu-logo-custom,
+.edu-menu-custom {
+  border: none !important;
 }
 
 .slide-custom {
@@ -53,6 +72,7 @@
   padding: 12px 16px;
   position: absolute;
   right: 0;
+  white-space: nowrap;
   width: 160px;
   z-index: 1;
 
@@ -65,19 +85,6 @@
   display: block;
 }
 
-.edu-header-wrap-custom,
-.edu-logo-custom,
-.edu-menu-custom {
-  border: none !important;
-}
-
-.dark {
-  .edu-standard-logo-custom img {
-    height: 60px !important;
-    margin-top: 20px !important;
-  }
-}
-
 .down-custom {
   padding-top: 5px;
 }
@@ -87,24 +94,18 @@
 }
 
 .introduction-video-bg {
-  bottom: 0;
-  height: 100%;
-  left: 0;
-  position: absolute;
-  right: 0;
-  top: 0;
-  width: 100%;
-
-  img {
-    height: 100%;
-    width: 100%;
-  }
+  background: image-url($introduction-video-bg) center center no-repeat;
+  background-size: cover;
 }
 
 
 .introduction-video-custom {
   background-color: $white-gray;
   height: 711px;
+
+  img {
+    width: 80%;
+  }
 }
 
 .introduction-video-url a {
@@ -124,22 +125,8 @@
 }
 
 .clients-say-custom {
+  background-image: image-url($clients-say-bg);
   padding: 100px 0;
-
-  .clients-say-custom-bg {
-    bottom: 0;
-    height: 100%;
-    left: 0;
-    position: absolute;
-    right: 0;
-    top: 0;
-    width: 100%;
-
-    img {
-      height: 100%;
-      width: 100%;
-    }
-  }
 
   .clients-say-title {
     position: relative;
@@ -162,4 +149,49 @@
 
 .video-overlay-custom {
   background-color: $black-55opacity;
+}
+
+.edu-dropdown-user-detail {
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.team-image img {
+  height: 285.52px;
+  width: 284.25px;
+}
+
+.mg-left-2 {
+  margin-left: 2%;
+}
+
+.our-client-custom {
+  height: 105px;
+}
+
+.our-client-custom img {
+  height: 100%;
+  object-fit: scale-down;
+  width: 100%;
+}
+
+.education-login-form {
+  max-width: 400px;
+}
+
+.custom-our-training {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+.custom-lastest-course {
+  padding-top: 0 !important;
+}
+
+.custom-about-us {
+  margin-top: 50px;
+}
+
+.testi-meta::before {
+  content: none;
 }

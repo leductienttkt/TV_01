@@ -1,6 +1,7 @@
 require_relative "boot"
 
 require "rails/all"
+require "roo"
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -22,5 +23,12 @@ module Fcsp
     config.i18n.available_locales = [:en, :vi, :jp]
     config.i18n.load_path += Dir[Rails.root.join("config",
       "locales", "**", "*.{rb,yml}")]
+    config.autoload_paths += Dir["#{config.root}/app/view_objects/**/"]
+
+    config.to_prepare do
+      Devise::SessionsController.layout "education/layouts/application"
+    end
+
+    config.time_zone = "Bangkok"
   end
 end

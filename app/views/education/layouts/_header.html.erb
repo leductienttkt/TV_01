@@ -3,34 +3,19 @@
     <div class="container clearfix">
       <div id="primary-menu-trigger"><i class="icon-reorder"></i></div>
       <div id="logo" class="edu-logo-custom">
-        <a href="#" class="standard-logo edu-standard-logo-custom" data-dark-logo="/assets/logo_framgia_white.png">
-          <img src="/assets/logo-framgia.png" alt="<%= t "education.logo_alt" %>"></a>
+        <%= link_to education_root_url, class: "standard-logo edu-standard-logo-custom",
+          data: {"dark-logo": "/assets/logo-faa.png"} do %>
+          <img src="/assets/logo-faa.png" alt="<%= t "education.logo_alt" %>">
+        <% end %>
+        <%= link_to education_root_url, class: "retina-logo edu-retina-logo-custom",
+          data: {"dark-logo": "/assets/logo-faa.png"} do %>
+          <img src="/assets/logo-faa.png" alt="<%= t "education.logo_alt" %>">
+        <% end %>
       </div>
 
       <nav id="primary-menu" class="dark">
         <ul class="edu-menu-custom">
-          <li class="current">
-          <%= link_to education_root_url do %>
-            <div><%= t "education.header.home" %></div>
-          <% end %>
-          </li>
-          <li class="mega-menu">
-            <%= link_to t("education.header.project"), education_projects_path %>
-          </li>
-          <li class="mega-menu">
-            <%= link_to t("education.header.posts"), education_posts_path %>
-          </li>
-          <li class="mega-menu">
-            <%= link_to t("education.header.courses"), education_courses_path %>
-          </li>
-          <li class="mega-menu">
-            <%= link_to t("education.header.trainings"), education_trainings_path %>
-          </li>
-          <li class="mega-menu"><a href="#"><div><%= t "education.header.trainees" %></div></a>
-          </li>
-          <li class="mega-menu">
-            <%= link_to t("education.header.feedback"), new_education_feedback_path %>
-          </li>
+          <%= view_object(:home_tabs).html %>
           <li class="dropdown chosen-language">
             <% if session[:locale].present? %>
               <%= link_to url_for(locale: session[:locale]), class:"dropdown-toggle dropdown-custom",
@@ -61,9 +46,29 @@
           <div id="top-cart" class="dropdown-user">
             <a><i class="icon-user"></i></a>
             <div class="dropdown-user-content">
-              <%= link_to destroy_user_session_path, method: :delete do %>
-                <span><i class="icon-signout"></i> <%= t ".log_out" %></span>
+              <% if is_management? %>
+                <div class="edu-dropdown-user-detail">
+                  <%= link_to education_management_root_path do %>
+                    <span><i class="icon-cog"></i>&nbsp;<%= t ".management" %></span>
+                  <% end %>
+                </div>
+                <hr>
               <% end %>
+              <div class="edu-dropdown-user-detail">
+                <%= link_to education_user_path(current_user) do %>
+                  <span><i class="icon-user"></i>&nbsp;<%= t ".profile" %></span>
+                <% end %>
+              </div>
+              <div class="edu-dropdown-user-detail">
+                <%= link_to new_education_post_path do %>
+                  <span><i class="icon-edit" aria-hidden="true"></i>&nbsp;<%= t ".create_new_post" %></span>
+                <% end %>
+              </div>
+              <div class="edu-dropdown-user-detail">
+                <%= link_to destroy_user_session_path, method: :delete do %>
+                  <span><i class="icon-signout"></i>&nbsp;<%= t ".log_out" %></span>
+                <% end %>
+              </div>
             </div>
           </div>
         <% else %>

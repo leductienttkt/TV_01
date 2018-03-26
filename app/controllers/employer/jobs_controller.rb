@@ -1,48 +1,92 @@
 class Employer::JobsController < Employer::BaseController
-  load_and_authorize_resource
-  before_action :load_company
   before_action :load_hiring_types, only: [:new, :create, :edit]
   before_action :update_status, only: :create
+  before_action :load_job, only: [:edit, :update]
+
+  def index
+    if params[:type]
+      listarr = params[:array_id]
+      listarr = listarr.split(",").map(&:to_i) if listarr.class == String
+      sort_by = params[:sort].nil? ? "ASC" : params[:sort]
+      @jobs = @company.jobs.includes(:candidates, :images, :bookmarks)
+        .filter(listarr, sort_by, params[:type]).page(params[:page])
+        .per Settings.employer.jobs.per_page
+    else
+      @jobs = @company.jobs.includes(:candidates, :images, :bookmarks)
+        .page(params[:page]).per Settings.employer.jobs.per_page
+    end
+    respond_to do |format|
+      format.js{
+        render json: {
+        html_job: render_to_string(partial: "job",
+          locals: {jobs: @jobs, company: @company}, collection: @jobs),
+        pagination_job: render_to_string(partial: "paginate",
+          locals: {jobs: @jobs}, layout: false)
+        }
+      }
+      format.html
+    end
+  end
 
   def new
     @job = Job.new
     @job.images.build
-  end
-
-  def index
-    @jobs = @company.jobs.newest.page(params[:page])
-      .per Settings.employer.jobs.per_page
-    restore_job params[:id]
-  end
-
-  def edit
-  end
-
-  def show
+    @teams = @company.teams.includes(:images).page(Settings.employer.page)
+      .per Settings.employer.team.per_page
   end
 
   def create
     @job = @company.jobs.build job_params
-    if @job.save
-      flash[:success] = t ".created_job"
-      redirect_to job_path(@job)
+    @job.posting_time = Time.zone.now unless @job.posting_time
+    if @job.create_transaction_post_skills
+      flash[:success] = t "employer.jobs.create.created"
+      redirect_to @job
     else
-      flash[:danger] = t ".create_job_fail"
+      flash[:danger] = t "employer.jobs.create.failed"
       redirect_back fallback_location: :back
     end
   end
 
-  def update
-    if @job.update_attributes job_params
-      flash[:success] = t ".job_post_updated"
-    else
-      flash[:danger] = t ".job_post_update_fail"
+  def edit
+    @job.images.build if @job.images.blank?
+    respond_to do |format|
+      format.js
     end
-    redirect_to job_path(@job)
+  end
+
+  def update
+    params[:job].delete :posting_time if @job.is_posted?
+    if @job.update_attributes job_params
+      @teams = @company.teams.includes(:images).page(Settings.employer.page)
+        .per Settings.employer.team.per_page
+      respond_to do |format|
+        format.json {render json: {
+          status: Job.human_enum_name(:status, @job.status)
+        }}
+        format.js {render "update.js.erb", locals: {job: @job}}
+        format.html {redirect_to employer_company_jobs_path @company}
+      end
+    else
+      redirect_back fallback_location: :back
+    end
   end
 
   def destroy
-    @job.destroy if params[:type] == "delete"
+    Job.delete_job params[:array_id]
+    @jobs = @company.jobs.includes(:candidates, :images, :bookmarks)
+      .page(params[:page]).per Settings.employer.jobs.per_page
+
+    respond_to do |format|
+      format.js{
+        render json: {
+        html_job: render_to_string(partial: "job",
+          locals: {jobs: @jobs, company: @company}, collection: @jobs),
+        pagination_job: render_to_string(partial: "paginate",
+          locals: {jobs: @jobs}, layout: false)
+        }
+      }
+      format.html
+    end
   end
 
   private
@@ -51,24 +95,18 @@ class Employer::JobsController < Employer::BaseController
     params.require(:job).permit Job::ATTRIBUTES
   end
 
-  def load_company
-    @company = Company.find_by id: params[:company_id]
-    not_found unless @company
-  end
-
-  def restore_job id
-    Job.restore(id, recursive: true) if params[:type] == "reopen"
-  end
-
   def load_hiring_types
     @hiring_types = HiringType.select :id, :name
   end
 
   def update_status
-    if params[:preview]
-      params[:status] = :preview
-    else
-      params[:status] = :community
-    end
+    params[:status] = params[:preview] ? :draft : :open
+  end
+
+  def load_job
+    @job = Job.find_by id: params[:id]
+    return if @job && @job.posting_time = Time.zone.now
+    flash[:danger] = t ".not_found"
+    redirect_to employer_company_job_path
   end
 end

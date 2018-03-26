@@ -41,6 +41,13 @@ jp:
       about_us: "About us"
       social_profiles: "Social Profiles"
       follow: "Follow"
+  follow_companies:
+    create:
+      follow: "follow company successfully!"
+      not_found: "Company not found!"
+    destroy:
+      unfollow: "Unfollow company successfully!"
+      not_found: "Company not found!"
   layouts:
     base_title: "FCSP"
     header:
@@ -49,6 +56,7 @@ jp:
       about: "About"
       login: "Login"
       logout: "Logout"
+      create_company: "会社を作る"
   pages:
     home:
       title: "Home"
@@ -60,6 +68,8 @@ jp:
       title: "Help"
   title: "Framgia code school platform"
   copy: "Copyright by Framgia"
+  invalid_datetime: "無効な時間"
+  invalid_time: "これを過去に表示する時間を設定することはできません"
   flash:
     deleted_success: "deleted successfully!"
   education:
@@ -73,7 +83,7 @@ jp:
       our_projects:
         heading: "Our Projects"
       our_team:
-        heading: "Meet Our Team"
+        heading: "Our team"
     trainings:
       training_not_found: "Training Not Found."
       index:
@@ -105,7 +115,7 @@ jp:
         description: "Description"
         name: "Name"
     see_more: "See More"
-    title: "Framgia Education"
+    title: "Framgia Awesome Academy"
     logo_alt: "Framgia logo"
     project:
       not_found: "Project not found!"
@@ -192,7 +202,7 @@ jp:
       success_title: "Success!"
       failed_title: "Failed!"
     slider:
-      welcome: "Welcome to Framgia Education"
+      welcome: "Welcome to Framgia Awesome Academy"
       description: "Master your self. Come with us"
     index:
       learning_program: "Learning Programs"
@@ -217,3 +227,28 @@ jp:
       date_month_year_concise: '%d-%m-%y'
   copy: "Copyright by Framgia"
   error: "error"
+  users:
+    find_user:
+      not_found: "User not found"
+    friend_ship_form:
+      remove_request: " Cancel Request"
+      request_friend: " Add Friend"
+      unfriend: " Unfriend"
+  friend_ships:
+    create:
+      request_friend: "Sent a request to %{name}"
+      not_found: "User not found"
+    destroy:
+      remove_request: "Cancelled request to %{name}"
+      unfriend: "Unfriended with %{name}"
+      not_found: "User not found"
+  friend_request_mailer:
+    friend_request:
+      subject: "You have a friend request from %{name}"
+      hi: "Hi %{name},"
+      end: "This email is sent automatically from FCSP, Please do not reply!"
+  time:
+    formats:
+      format_datetime_js: "YYYY/MM/DD HH:mm"
+      format_datetime: "%Y/%m/%d %H:%M"
+      format_date: "%Y/%m/%d"

@@ -1,0 +1,91 @@
+<%= render "header", user: @user, user_object: @user_object %>
+<section>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8">
+        <article class="post show-tab-user">
+          <div class="clearfix">
+            <% if check_show_newfeed? @user %>
+              <div class="hide-tab active" id="tab-new-feed">
+                <%= render "new_feed", user_shared: @user_object.user_shared %>
+              </div>
+            <% end %>
+            <% if @user.is_user? current_user %>
+              <div class="clearfix hide-tab" id="tab-suggest-job">
+                <%= render "user_job", user: @user, user_object: @user_object %>
+              </div>
+              <div class="clearfix hide-tab" id="tab-bookmarked-job">
+                <%= render "bookmarked_jobs", user: @user, user_object: @user_object %>
+              </div>
+            <% end %>
+            <div class="hide-tab clearfix" id="tab-information">
+              <% if @user.is_user?(current_user) || @user.info_user_info_statuses[:introduction] == InfoUser::INFO_STATUS[:public] %>
+                <%= render "info_users/introduction", user: @user, info_user: @info_user %>
+              <% end %>
+              <% if @user.is_user?(current_user) || @user.info_user_info_statuses[:ambition] == InfoUser::INFO_STATUS[:public] %>
+                <%= render "info_users/ambition", user: @user, info_user: @info_user %>
+              <% end %>
+              <% if @user.is_user?(current_user) || @user.info_user_info_statuses[:portfolio] == InfoUser::INFO_STATUS[:public] %>
+                <%= render "user_portfolios/user_portfolio", user: @user, portfolios: @user_object.portfolios %>
+              <% end %>
+              <% if @user.is_user?(current_user) || @user.info_user_info_statuses[:award] == InfoUser::INFO_STATUS[:public] %>
+                <%= render "awards/user_award", user: @user, awards: @user_object.awards %>
+              <% end %>
+              <% if @user.is_user?(current_user) || @user.info_user_info_statuses[:work] == InfoUser::INFO_STATUS[:public] %>
+                <%= render "user_works/work", user: @user %>
+              <% end %>
+              <% if @user.is_user?(current_user) || @user.info_user_info_statuses[:education] == InfoUser::INFO_STATUS[:public] %>
+                <%= render "user_education", user: @user %>
+              <% end %>
+              <% if @user.is_user?(current_user) || @user.info_user_info_statuses[:link] == InfoUser::INFO_STATUS[:public] %>
+                <%= render "user_link", user: @user %>
+              <% end %>
+              <% if @user.is_user?(current_user) || @user.info_user_info_statuses[:project] == InfoUser::INFO_STATUS[:public] %>
+                <%= render "user_projects/projects", user: @user %>
+              <% end %>
+              <% if @user.is_user?(current_user) || @user.info_user_info_statuses[:certificate] == InfoUser::INFO_STATUS[:public] %>
+                <%= render "user_certificate", user: @user %>
+              <% end %>
+              <% if @user.is_user?(current_user) || @user.info_user_info_statuses[:language] == InfoUser::INFO_STATUS[:public] %>
+                <%= render "user_languages", user: @user %>
+              <% end %>
+              <% if @user.is_user?(current_user) || @user.info_user_info_statuses[:skill] == InfoUser::INFO_STATUS[:public] %>
+                <%= render "skill_user", user: @user %>
+              <% end %>
+            </div>
+            <div class="hide-tab clearfix" id="tab-posts">
+              <%= render "posts", user: @user, posts: @user_object.list_post %>
+            </div>
+            <div class="clearfix hide-tab" id="tab-list-friend">
+              <div class="row widget">
+                <div class="job-index-page  col-md-6 col-xs-12">
+                  <%= render "search_friend", user: @user %>
+                </div>
+              </div>
+              <div id="list-friend">
+                <%= render "list_friend", list_friends: @user_object.search_friends, user: @user %>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+      <div class="col-md-4">
+        <article class="post show-tab-user">
+          <%= tms_synchronize_button %>
+          <%= render "social_network", user: @user, info_user: @info_user %>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="user-language-modal"></div>
+<div class="user-work-modal"></div>
+<div class="user-project-modal"></div>
+<div class="portfolio-modal"></div>
+<div class="portfolio-modal-image"></div>
+<div class="award-modal"></div>
+<div class="render-form-user-link-modal"></div>
+<div class="form-user-certificate-modal"></div>
+<div class="render-form-user-education-modal"></div>
+<div class="render-form-user-skill-modal"></div>
+<%= javascript_include_tag "users" %>

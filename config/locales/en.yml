@@ -4,27 +4,46 @@ en:
       show:
         error: "Show job error!"
   jobs:
-    candidate:
-      apply_job: "Job"
+    job_form:
+      next: "Next"
     show:
       apply_job: "Apply Job"
+      person_applied: "Currently %{candidate} person has applied."
+      location: "%{company_name} Location"
+      recommend: "Recommend"
+      apply_modal_header: "We have notified %{company_name} of your interest."
+      interest_heading: "Please tell us what you are interested in."
+      let_s_work_together: "Let’s work together!"
+      let_s_have_chat: "Let’s have a chat."
+      interest_me: "This opportunity interests me."
+      your_entry_complete: "Your entry is complete!"
+      success_heading: "Let's wait to hear from the person"
+      success_description: "If the person take an interest in you, you will receive an invitation message."
+      apply_success_alt: "Apply success"
+      entry: "Entry"
+      apply_failed_title: "Apply failed"
+      need_update_profile_alt: "You should update your profile before apply this job"
+      should_update_heading: "Employer needs more on your profile"
+      should_update_heading_description: "Update your profile and comeback to us"
+      cancel: "Cancel"
+      edit_profile: "Edit my profile"
+      no_result: "No one matches these skills"
+      total_views: "Total views"
     index:
-      table:
-        thead:
-          id: "Id"
-          title: "Title"
-          describe: "Describe"
+      popular_job: "Popular Jobs"
       title: "List jobs"
+    search_form:
+      search: "Enter your search"
     job_title:
       sales: "Sales"
       show:
         job_type: "Job type"
         total_views: "Total views"
     members_of_company:
-      members: "members"
-      views_all: "All members( "
-      views_all_close: ")"
+      members: "%{company} members"
+      views_all: "All members"
       edit_posting: "Edit posting"
+      no_one: "No One"
     introduction_company:
       what_we_do: "What we do"
       message_team_introduc_null: "Team introduction null"
@@ -34,145 +53,145 @@ en:
       edit_posting: "Edit posting"
     basic_infor:
       sales: "Sales"
-      basic_info_job: "Basic Info"
+      basic_info_job: "Basic Information"
       look_for: "Looking for"
-      job_type: "Job Type"
-      posting_feature: "Posting Features"
-      company_info: "Company Info"
+      job_type: "Job type"
+      posting_feature: "Posting features"
+      company_info: "Company information"
       founded: "Founded"
       industries: "Industries"
       learn_more_info: "Learn more about the company"
       comma: ", "
       benefit_null: "Benefit null"
       indus_info: "IT / Automobiles / Industrial Machinery/ Industrial Supplies"
-  employer:
-    dashboards:
-      index:
-        title: "Company"
-    companies:
-      edit:
-        company_info: "Company Info"
-        edit_company_info: "Edit company info"
-        manage_members: "Manage members"
-        manage_images: "Manage images"
-        manage_accounts: "Manage accounts on social network"
-      edit_company_info:
-        update_company_info: "Update Company"
-        required: "(required)"
-        article: "Add article"
-    team_introductions:
-      form:
-        title: "Title"
-        contents: "Content"
-        images: "Image"
-        submit: "Save"
-      image_fields:
-        caption: "write caption"
-        team_introduction: "Team Introduction"
-      new:
-        team_introduction: "Team Introduction"
-        team_introduction_1: "Team Introduction 1"
-        team_introduction_2: "Team Introduction 2"
-        team_introduction_3: "Team Introduction 3"
-        team_introduction_recruitment: "Team Introduction Recruiment"
-        submit: "Submit"
-      not_found: "Team Introduction not found"
-      success: "Successfully added team introduction"
-    dashboards:
-      index:
-        title: "Company"
-      dashboard:
-        menu: "Menu"
-        manager_postings: "Manager Postings"
-        candidates: "Candidates"
-        messages: "Messages"
-        recommendations: "Recommendations"
-        view_mores: "View mores"
-        current_plans: "Current Plans"
-        contact: "Contact Us"
-        trial: "Trial"
-        view_candidates: "Current viewable candidates"
-        mail: "Mail"
-        help: "Help"
-        company_info: "Company Info"
-    layouts:
-      header:
-        dashboard: "Dashboard"
-        jobs: "Jobs"
-        feed: "Feed"
-        tools: "Tools"
-        edit_profile: "Edit Profile"
-        account_info: "Account Info"
-        company_info: "Company Info"
-        setting: "Setting"
-        logout: "Logout"
-  jobs:
+      skill_require: "Skill require"
     job_form:
       next: "Next"
-  companies:
-    show:
-      info: "Info"
-      news: "News"
-      jobs: "Jobs"
-      members: "Members"
-      stats: "Stats"
-      founder: "Founder"
-      founded: "Founded on"
-      no_of_members: "# of Members"
-      about_us: "About us"
-      social_profiles: "Social Profiles"
-      follow: "Follow"
-  layouts:
-    base_title: "FCSP"
-    header:
-      home: "Home"
-      help: "Help"
-      about: "About"
-      login: "Login"
-      logout: "Logout"
+    posting_jobs:
+      title: "Other jobs posting you may like"
+    popular_job:
+      comments: "35 comments"
+      person_applied: " person has applied"
+    bookmark:
+      bookmark: "Bookmark"
+      bookmark_job: "Bookmark job"
+      bookmarked: "Bookmarked"
+      unbookmark: "Unbookmark"
+    candidate:
+      apply_job: "Apply Job"
+      unapply_job: "Unapply Job"
+      currently: "Currently"
+      person_applied: "Person applied"
+    job:
+      read_more: "Read more"
+      type_of_candidates: "Type of candidates: "
+      share: " Share"
+      unshare: " Unshare"
+      comments: "Comments"
+    recommend_user:
+      show_more: "View more"
+      recommend: "Recommend"
+    message:
+      message: "Messages"
+  follow_companies:
+    create:
+      follow: "follow company successfully!"
+      not_found: "Company not found!"
+    destroy:
+      unfollow: "Unfollow company successfully!"
+      not_found: "Company not found!"
+  share_posts:
+    share: "Do you want to share this post?"
+    unshare: "Do you want to unshare this post?"
+    create:
+      not_found: "Post not found"
+      share_success: "Share post successfully!"
+      share_fail: "Fail to share post!"
+    destroy:
+      not_found: "post not found"
+      unshare_success: "Unshare post successfully!"
+      unshare_fail: "Fail to unshare post!"
+    post:
+      share: " Share"
+      unshare: " Unshare"
+    share_job:
+      shared_at: "shared at "
+  share_jobs:
+    share: "Do you want to share this job?"
+    unshare: "Do you want to unshare this job?"
+    create:
+      not_found: "Job not found"
+      share_success: "Share job successfully!"
+      share_fail: "Fail to share job!"
+    destroy:
+      not_found: "Job not found"
+      unshare_success: "Unshare job successfully!"
+      unshare_fail: "Fail to unshare job!"
+    job:
+      share: " Share"
+      unshare: " Unshare"
+    share_job:
+      shared_at: "shared at "
   pages:
-    home:
+    index:
       title: "Home"
+      job_opportunity: "Jobs Opportunity"
     about:
       content: "This is about page"
       title: "About"
     help:
       content: "This is help page"
       title: "Help"
+    job_bookmark:
+      unbookmark: "Unbookmark"
+      bookmark_job: "Bookmark"
   layouts:
+    message:
+      success_title: "Success"
+      failed_title: "Fail"
+      warning_title: "Warning"
     base_title: "FCSP"
     header:
       home: "Home"
+      jobs: "Jobs"
       employer: "Employer"
+      create_company: "Create Company"
       admin: "Admin"
       messages: "Messages"
       help: "Help"
       about: "About"
-      login: "Login"
+      login: "Sign in"
       logout: "Logout"
       profile: "Profile"
       message: "Messages"
       sign_out: "Sign out"
+      create_new_post: "Create new post"
+      search: "Search and hit enter..."
+    job_bookmark:
+      bookmark: "Bookmark"
+      bookmarked: "Bookmarked"
+      unbookmark: "Unbookmark"
   title: "Framgia code school platform"
   copy: "Copyright by Framgia"
+  invalid_datetime: "Invalid time"
+  invalid_time: "Can't set time to show this in the past"
   flash:
     deleted_success: "deleted successfully!"
   education:
-    layouts:
-      header:
-        log_out: "Logout"
-        log_in: "Login"
+    trainers:
+      index_posts:
+        filter: "Filter"
     home:
       our_trainings:
         techniques: "Techniques"
-        our_trainings: "Our Trainings"
+        our_trainings: "Training programs"
         see_more: "See more"
       clients_say:
         heading: "What Clients Say?"
       our_projects:
-        heading: "Our Projects"
+        heading: "Projects"
       our_team:
-        heading: "Meet Our Team"
+        heading: "Our team"
     trainings:
       training_not_found: "Training Not Found."
       index:
@@ -193,19 +212,30 @@ en:
         view_courses: "View all courses"
       new:
         create_training: "Create"
+        add_image: "Add image"
+      new_training:
+        create_new_training: "Create a new training"
       edit:
         update_project: "Update"
+        heading: "Edit training"
+        heading_description: "Make is awesome"
+        add_image: "Add image"
+      new:
+        heading: "Create new training"
+        heading_description: "Make is awesome"
       update:
         training_updated_successfully: "Training updated successfully!"
       create:
         training_created: "Training created !"
         training_create_failed: "Create training failed!"
+      image_fields:
+        remove: "Remove"
       form:
         description: "Description"
         name: "Name"
     related_project: "Related Projects:"
     see_more: "See More"
-    title: "Framgia Education"
+    title: "Framgia Awesome Academy"
     logo_alt: "Framgia logo"
     project:
       not_found: "Project not found!"
@@ -258,6 +288,7 @@ en:
         plat_form: "Platform"
         release_note: "Release note"
         git_repo: "Git repository"
+        add_image: "add images"
       new:
         create_project: "Create project"
       edit:
@@ -284,6 +315,7 @@ en:
       trainees: "Trainees"
       search: "Type & Hit Enter.."
       feedback: "Feedback"
+      trainings: "Trainings"
     feedback:
       title: "Feedback"
       description: "Get in Touch with Us"
@@ -302,6 +334,19 @@ en:
       create_new: "Create new post"
       older: "&larr;Older"
       newer: "Newer &rarr;"
+      index:
+        posts: "Posts"
+        search_placeholder: "Search"
+        show_all: "Show all"
+        more: "More"
+        placeholder_search: "Search"
+        title_description: "Lastest posts of our Members"
+        title: "Member's posts"
+        filter: "Filter"
+      nav_search:
+        new: "Create new post"
+        show_all: "Show all"
+        keyword: "Search"
       show:
         follow_us_on_twitter: "Follow Us on Twitter"
         share_this_post: "Share this Post:"
@@ -315,6 +360,8 @@ en:
         name: "Name"
         email: "Email"
         post_not_found: "Post is not found."
+        next_post: "Next Post"
+        previous_post: "Previous Post"
       create:
         post_create_success: "Post is successfully created"
       update:
@@ -361,7 +408,7 @@ en:
     post:
       post_not_found: "Post is not found."
     slider:
-      welcome: "Welcome to Framgia Education"
+      welcome: "Welcome to Framgia Awesome Academy"
       description: "Master your self. Come with us"
     index:
       learning_program: "Learning Programs"
@@ -377,6 +424,13 @@ en:
     formats:
       date_month_year_concise: '%d-%m-%y'
       time_date_month_year: '%-d %B %Y, %H:%M %p '
+      format_datetime_js: "YYYY/MM/DD HH:mm"
+      format_datetime: "%Y/%m/%d %H:%M"
+      format_date: "%Y/%m/%d"
+  date:
+    formats:
+      month_year_format: "%B %Y"
+      short_month_year: "%d-%m-%Y"
   copy: "Copyright by Framgia"
   error: "error"
   comment:
@@ -386,3 +440,650 @@ en:
     comment_count: " Comments"
     submit_button: "Submit comment"
     edit_button: "Save"
+  cant_revert: "This action cannot be reversed"
+  confirm_create: "OK"
+  cancel_create: "Cancel"
+  cancelled: "Cancelled set up this company introduction"
+  safe: "This company introduction is safe"
+  browser_not_support: "This browser does not support FileReader."
+  kaminari:
+    prev: "Previous"
+    next: "Next"
+  users:
+    find_user:
+      not_found: "User not found"
+    list_friend:
+      remove_request: " Cancel Request"
+      request_friend: " Add Friend"
+      unfriend: " Unfriend"
+      mutual_friends: "mutual friends"
+      friends: "friends"
+      no_friend: "No friend"
+    friend_ship_form:
+      remove_request: " Cancel Request"
+      request_friend: " Add Friend"
+      unfriend: " Unfriend"
+      waiting: " Waiting..."
+      request_waiting: "Sent request to you!"
+    show:
+      new_feed: "New feed"
+      information: "Information"
+      posts: "Posts"
+      not_found: "User not found"
+      blocked: "This user is blocked!"
+      job_suggest: "Suggest job"
+      synchronize_tms: "Synchronize TMS"
+    header:
+      add_profile_section: "Add profile section"
+      add_language: "Add Language"
+      add_language_description: "Showcase your languages ability"
+      add_education: "Add Education"
+      add_education_description: "Adding your schools"
+      add_work: "Add Work"
+      add_work_description: "Adding your works"
+      add_project: "Add Project"
+      add_project_description: "Adding your projects"
+      add_portfolio: "Add Portfolio"
+      add_portfolio_description: "Adding your portfolios"
+      add_award: "Add Award"
+      add_award_description: "Adding your awards"
+      add_link: "Add Link"
+      add_link_description: "Adding your links"
+      add_certificate: "Add Certificate"
+      add_certificate_description: "Adding your certificates"
+      add_skill: "Add Skill"
+      add_skill_description: "Adding your skills"
+      friends: "Friends"
+      add_friend: "Add friend"
+      message: "Message"
+      edit_profile: "Edit profile"
+      location: "Location"
+      working_at: "Working at"
+      change_cover: "Change your cover image"
+      new_feed: "New feed"
+      information: "Information"
+      posts: "Posts"
+      add_profile_section: "Add new profile sections"
+      background: "Background"
+      skills: "Skills"
+      accomplishments: "Accomplishments"
+      bookmarked_jobs: "Bookmarked Jobs"
+      job_suggest: "Job Suggest"
+      skills: "Skills"
+      add_new_skill: "Add new skill"
+    social_network:
+      about_me: "About me"
+      social_profiles: "Connect with me"
+      address: "Address"
+      phone: "Phone"
+      add_quote: "Add your favorite quote"
+      edit: "Edit"
+      facebook: "Facebook"
+      google: "Google +"
+      twitter: "Twitter"
+      linkedin: "LinkedIn"
+      skype: "Skype"
+      youtube: "Youtube"
+      instagram: "Instagram"
+    edit_social_network_modal:
+      header: "Update your social network"
+      facebook: "Facebook"
+      google: "Google +"
+      twitter: "Twitter"
+      linkedin: "LinkedIn"
+      skype: "Skype"
+      youtube: "Youtube"
+      instagram: "Instagram"
+      save: "Save"
+      close: "Close"
+    change_avatar:
+      title: "Update avatar"
+      save: "Save"
+      close: "Close"
+      from_album: "Choose from your album"
+    change_cover:
+      title: "Update cover image"
+      save: "Save"
+      close: "Close"
+      from_album: "Choose from your album"
+    album_image:
+      no_image: "No images"
+    user_education:
+      education: "Education"
+      add: "Add"
+      public: "Public"
+      only_me: "Only me"
+    user_link:
+      links: "Links"
+      add: "Add"
+    job_accordance:
+      see_more: "See more"
+    posts:
+      add: "Add"
+      public: "Public"
+      only_me: "Only me"
+    user_certificate:
+      certificate: "Certificates"
+      add: "Add"
+      public: "Public"
+      only_me: "Only me"
+    search_friend:
+      search: "Enter your search"
+    user_languages:
+      add: "Add"
+      languages: "Languages"
+      public: "Public"
+      only_me: "Only me"
+      new:
+        add: "Add"
+        close: "Close"
+      edit:
+        edit: "Edit"
+        close: "Close"
+    skill_user:
+      skills: "Skills"
+      add: "Add"
+  user_works:
+    create:
+      create_success: "Add work successfully!"
+      create_faild: "Add work failed!"
+    update:
+      update_success: "Update work successfully!"
+      update_faild: "Update work failed!"
+    destroy:
+      destroy_success: "Delete work successfully!"
+      destroy_faild: "Delete work failed!"
+    org_search:
+      people: "%{num} others"
+    work:
+      user_work: "User Work"
+      add: "Add"
+    user_work_form:
+      all_status:
+        full_time: "Full time"
+        part_time: "Part time"
+        internship: "Internship"
+      header: "Update Work"
+      company: "Company"
+      position: "Position"
+      start_time: "Start time"
+      end_time: "End time"
+      status: "Status"
+      description: "Description"
+      update: "Update"
+      close: "Close"
+    user_work:
+      edit: "Edit"
+      delete: "Delete"
+      all_status:
+        full_time: "Full time"
+        part_time: "Part time"
+        internship: "Internship"
+      split: " - "
+      to: "to"
+      sure: "Are you sure?"
+    work:
+      add: " Add"
+      user_work: "Work"
+      public: "Public"
+      only_me: "Only me"
+    org_search:
+      people: "%{num} others"
+  user_projects:
+    create:
+      create_success: "Add project successfully!"
+      create_faild: "Add project faild!"
+      not_found: "Project not found!"
+    update:
+      update_success: "Update project successfully!"
+      update_faild: "Update project faild!"
+      not_found: "Project not found!"
+    destroy:
+      destroy_success: "Delete project successfully!"
+      destroy_faild: "Delete project faild!"
+      not_found: "Project not found!"
+    user_project_form:
+      header: "Update Project"
+      title: "Title"
+      Url: "Url"
+      start_date: "Start date"
+      end_date: "End date"
+      description: "Description"
+      update: "Update"
+      close: "Close"
+    projects:
+      user_project: "Projects"
+      add: "Add"
+      public: "Public"
+      only_me: "Only me"
+    user_project:
+      split: " - "
+      sure: "Are you sure?"
+      edit: "Edit"
+      delete: "Delete"
+  skill_users:
+    form_skill_user:
+      update: "Update"
+      skill: "Skill"
+      close: "Close"
+      title: "Skills"
+    result:
+      no_result: "No result"
+    create:
+      success: "create skill success"
+      fail: "create skill failed"
+    destroy:
+      destroy_success: "destroy skill user success"
+      destroy_faild: "destroy skill user faild"
+    update:
+      success: "update skill success"
+      faild: "update skill failed"
+    skill_user:
+      edit: "Edit"
+      delete: "Delete"
+      sure: "Are your sure?"
+  user_portfolios:
+    edit:
+      update: "Update"
+    new:
+      add: "Add"
+      update: "Update"
+    destroy:
+      success: "Delete portfolio successfully"
+      failed: "Delete portfolio failed"
+    create:
+      portfolio_created: "Created portfolio successfully"
+      portfolio_create_failed: "Create portfolio failed"
+      success: "Created portfolio successfully"
+      failed: "Created portfolio failed"
+      update: "Update"
+    update:
+      portfolio_updated: "Updated portfolio successfully"
+      portfolio_update_failed: "Update portfolio failed"
+      success: "update portfolio successfully"
+      failed: "update portfolio failed"
+      update: "Update"
+      fail_image: "You must update image"
+    form_image:
+      portfolio_header_image: "Image"
+      add_image: "add image"
+      close: "Close"
+      portfolio_notification_image: "You can skip!"
+    load_portfolio:
+      not_found: "Not found!"
+    form_portfolio:
+      add_image: "Add image"
+      title: "Title"
+      description: "Description"
+      made: "Made"
+      image: "Image"
+      url: "Url"
+      update: "Update"
+      close: "Cancel"
+      portfolio_header: "Portfolios"
+    show_portfolio:
+      portfolio_not_found: "no portfolio"
+      delete: "Delete"
+      edit: "Edit"
+      sure: "Are you sure?"
+    user_portfolio:
+      user_portfolio: "Portfolio"
+      add: "Add"
+      public: "Public"
+      only_me: "Only me"
+  info_users:
+    update:
+      success: "Updated Successfully!"
+      fail: "Updated failed!"
+      infor_user_not_found: "Information not found!"
+      update_button: "Update"
+    introduction:
+      introduction: "Introduction"
+      edit: "Edit"
+      friends: "Friends"
+      friends_of_friends: "Friends of Friends"
+      public: "Public"
+      only_me: "Only me"
+    edit_introduction_modal:
+      update_button: "Update"
+      cancel_button: "Cancel"
+      edit_introduction: "Edit introduction"
+      introduce_placeholder: "Introduce yourself..."
+    edit_about_me_modal:
+      update_button: "Update"
+      cancel_button: "Cancel"
+      edit_ambition: "Edit Ambition"
+    find_info_user:
+      infor_user_not_found: "Infomation of user not found"
+    ambition:
+      ambition: "My ambition"
+      edit: "Edit"
+      friends: "Friends"
+      friends_of_friends: "Friends of Friends"
+      public: "Public"
+      only_me: "Only me"
+    edit_ambition_modal:
+      update_button: "Update"
+      cancel_button: "Cancel"
+      edit_ambition: "Edit my ambition"
+      ambition_placeholder: "My ambition..."
+    quote:
+      quote: "Quote"
+      edit: "Edit"
+      friends: "Friends"
+      friends_of_friends: "Friends of Friends"
+      public: "Public"
+    edit_quote_modal:
+      update_button: "Update"
+      cancel_button: "Cancel"
+      edit_quote: "Edit my quote"
+      quote_placeholder: "My quote..."
+  friend_ships:
+    create:
+      request_friend: "Sent a request to %{name}"
+      not_found: "User not found"
+    destroy:
+      remove_request: "Cancelled request to %{name}"
+      unfriend: "Unfriended with %{name}"
+      not_found: "User not found"
+    load_user:
+      not_found: "user not found"
+    update:
+      success: "confirm successfully"
+      failed: "confirm failed"
+      reject_success: "reject successfully"
+      reject_failed: "reject failed"
+    friend_request:
+      confirm: "Confirm"
+      friend-ship: "Friend Requests"
+      mutual-friends: "Mutual friends"
+      reject: "delete request"
+      request_not_found: "no new requests"
+      view_all: "View All"
+  user_avatars:
+    create:
+      success: "Change avatar successfully!"
+      fail: "Change avatar failed"
+    update:
+      success: "Change avatar successfully!"
+      fail: "Change avatar failed"
+      not_found: "Image not found"
+  user_covers:
+    create:
+      success: "Change cover image successfully!"
+      fail: "Change cover image failed"
+    update:
+      success: "Change cover image successfully!"
+      fail: "Change cover image failed"
+      not_found: "Image not found"
+  friend_request_mailer:
+    friend_request:
+      subject: "You have a friend request from %{name}"
+      hi: "Hi %{name},"
+      end: "This email is sent automatically from FCSP, Please do not reply!"
+  javascripts:
+    user_portfolio_alert: "Are you sure?"
+    user_award_alert: "Are you sure?"
+  awards:
+    show_award:
+      award_not_found: "Award not found"
+      delete: "Delete"
+      edit: "Edit"
+      sure: "Are you sure?"
+    user_award:
+      user_award: "Award(s)"
+      add: "Add"
+      public: "Public"
+      only_me: "Only me"
+    form_award:
+      title: "Title"
+      made: "Award year"
+      close: "Cancel"
+      award_header: "Award"
+    new:
+      update: "Update"
+    destroy:
+      success: "Deleted award successfully"
+      failed: "Deleted award fail"
+    create:
+      success: "Create award successfully"
+      failed: "create award Failed"
+    update:
+      success: "Update award successfully"
+      failed: "Update award Failed"
+  user_educations:
+    form_user_education:
+      title: "Update your education"
+      close: "Close"
+      update: "Update"
+      school: "School"
+      major: "Major"
+      graduation: "Graduation"
+      description: "Description"
+    result:
+      no_result: "No result for"
+      studied: "others studied here."
+    create:
+      success: "Updated successfully!"
+      fail: "Updated failed!"
+      school_not_found: "School not found"
+    user_education:
+      edit: "Edit"
+      delete: "Delete"
+      sure: "Are you sure?"
+    edit:
+      not_found: "Education not found"
+    update:
+      not_found: "Education not found"
+      success: "Updated successfully!"
+      fail: "Updated failed!"
+      school_not_found: "School not found"
+    destroy:
+      not_found: "Education not found"
+      success: "Deleted successfully!"
+      fail: "Deleted failed!"
+  user_links:
+    user_link:
+      edit: "Edit"
+      delete: "Delete"
+      sure: "Are you sure?"
+    form_user_link:
+      title: "Update your link"
+      close: "Close"
+      save: "Save your changes"
+      link: "Link"
+    create:
+      success: "Updated successfully!"
+      fail: "Updated failed!"
+    edit:
+      not_found: "Link not found"
+    update:
+      not_found: "Link not found"
+      success: "Updated successfully!"
+      fail: "Updated failed!"
+    destroy:
+      not_found: "Link not found"
+      success: "Deleted successfully!"
+      fail: "Deleted failed!"
+  user_posts:
+    new:
+      header: "Create new post"
+    form_post:
+      title: "Title"
+      content: "Content"
+      save: "Save your post"
+      cancel: "Cancel"
+    create:
+      success: "Created post successfully!"
+      fail: "Created post failed!"
+    show:
+      heading: "Post"
+      home: "Home"
+      posts: "Posts"
+      comments: "comments"
+      edit: "Edit"
+      delete: "Delete"
+      sure: "Are you sure?"
+      related_posts: "Related posts"
+      not_found: "Post not found"
+    edit:
+      header: "Edit your post"
+      not_found: "Post not found"
+    update:
+      success: "Updated post successfully!"
+      fail: "Updated post failed!"
+      not_found: "Post not found"
+    destroy:
+      success: "Deleted post successfully!"
+      fail: "Deleted post failed!"
+      not_found: "Post not found"
+    user_post:
+      read_more: "Read more"
+      delete: "Delete"
+      confirm_delete: "Are you sure?"
+    search_form:
+      search_placeholder: "Search..."
+  growl_title:
+    notice: "Notice!"
+    error: "Error!"
+    warning: "Warning!"
+  certificates:
+    new:
+      create: "Create"
+    edit:
+      update: "Update"
+    create:
+      success: "Create certificate successfully"
+      failed: "create certificate Failed"
+    update:
+      success: "Update certificate successfully"
+      failed: "Update certificate Failed"
+    destroy:
+      success: "Destroy certificate successfully"
+      failed: "Destroy certificate Failed"
+    load_certificate:
+      not_found: "Certificate not to be found"
+    certificate:
+      edit: "Edit"
+      sure: "Are you sure?"
+      delete: "Delete"
+    certificate_form:
+      certificate_header: "Certificate"
+      certificate: "Certificate"
+      qualified_time: "Qualified time"
+      qualified_organization: "Qualified by"
+      close: "Close"
+  user_languages:
+    user_language_form:
+      update: "Update"
+      header: "Update language"
+      language: "Language"
+      close: "Close"
+      add: "Add"
+      edit: "Edit"
+      levels:
+        elementary: "Elementary proficiency"
+        limited: "Limited working proficiency"
+        professional: "Professional working proficiency"
+        full_professional: "Full professional proficiency"
+        native: "Native or bilingual proficiency"
+    destroy:
+      destroy_success: "Successfully destroyed"
+      destroy_failed: "Destroy failed"
+    create:
+      create_success: "Successfully created"
+      create_failed: "Create failed"
+    update:
+      update_success: "Successfully updated"
+      update_failed: "Update failed"
+    user_language:
+      sure: "Are you sure?"
+      levels:
+        elementary: "Elementary proficiency"
+        limited: "Limited working proficiency"
+        professional: "Professional working proficiency"
+        full_professional: "Full professional proficiency"
+        native: "Native or bilingual proficiency"
+  user_social_networks:
+    create:
+      success: "Updated successfully!"
+      fail: "There is an invalid URL! Please try again!"
+    update:
+      success: "Updated successfully!"
+      fail: "There is an invalid URL! Please try again!"
+  comments:
+    create:
+      create_failed: "Comment failed"
+    update:
+      update_failed: "Update comment failed"
+    destroy:
+      destroy_failed: "Delete comment failed"
+    comment_form:
+      content: "Comment something..."
+      submit_button: "Comment"
+    comment_item:
+      delete_confirm: "Are you sure?"
+    comments:
+      login_to_comment: "Login to comment"
+      comments: "Comments"
+    edit_comment_form:
+      edit_button: "Edit"
+  likes:
+    load_user_post:
+      not_found: "User's post not to be found"
+    load_like:
+      not_found: "Like not to be found"
+    like_user_post:
+      you_and_orthers_like: "You and %{count} orthers"
+      orthers_like: "%{count} orthers"
+  omniauth_callbacks:
+    hr_system:
+      auth_failure: "Auth failure"
+    failure:
+      auth_failure: "Auth failure"
+  articles:
+    sort:
+      title: " Title"
+      time: " Time show"
+      search: "Search"
+    show:
+      not_found: "Article not found"
+      post: "Posted by "
+      time: "on %{time}"
+  organizations:
+    show:
+      org_infor: "This page content is totaled data based on FCSP users"
+      people_worked_here: "People who worked here"
+      people_worked: "People who worked here also worked"
+      new_job: "Newest jobs"
+      org_not_found: "Organization not found"
+  activerecord:
+    errors:
+      models:
+        user_project:
+          attributes:
+            end_date:
+              after: "Start time must be less than end time"
+              invalid_date: "Start time must be less than end time"
+        user_work:
+          attributes:
+            end_time:
+              after: "Start time must be less than end time"
+  friend_requests:
+    index:
+      friend_requests: "Friend requests"
+      request_not_found: "No New Friend Requests"
+      mutual-friends: "mutual friends"
+      confirm: "confirm"
+      reject: "delete request"
+    suggest_friends:
+      people_know: "People you may know"
+      remove_request: " Cancel Request"
+      request_friend: " Add Friend"
+      unfriend: " Unfriend"
+      mutual_friends: "mutual friends"
+      friends: "friends"
+  tms_synchronize:
+    index:
+      synchronize_success: "Synchronize Success"
+      synchronize_fail: "Something wrong, please try again later"

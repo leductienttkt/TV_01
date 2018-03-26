@@ -81,3 +81,56 @@
 .margin-training-infor {
   margin-left: 20px;
 }
+
+.nested-fields.trainnings-image-form {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding-bottom: 10px;
+  padding-top: 10px;
+
+  img {
+    flex-grow: 1;
+    padding-right: 10px;
+  }
+}
+
+.education-training-name {
+  width: 100%;
+}
+
+.education-training-description {
+  width: 100%;
+}
+
+@media only screen and (max-width : 480px) {
+  .nested-fields.trainnings-image-form {
+    img {
+      margin-bottom: 5px;
+    }
+  }
+}
+
+.portfolio-item-training {
+  .carousel {
+    a {
+      width: 90%;
+    }
+  }
+
+  img {
+    height: 250px !important;
+  }
+}
+
+.choose-technique {
+  min-width: 100px;
+}
+
+.form-choose-technique {
+  max-height: 200px;
+  overflow: auto;
+  padding-bottom: 20px;
+  padding-top: 10px;
+}

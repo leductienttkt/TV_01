@@ -13,7 +13,6 @@
 //= require gentelella
 //= require jqvmap/maps/jquery.vmap.world
 //= require jqvmap/maps/jquery.vmap.usa
-//= require ./jquery.smartWizard
-//= require ./jquery.vmap.sampledata
-//= require ./gentelella-custom
+//= require_tree ../../../../vendor/assets/javascripts/js/gentelella
 //= require flash_message
+//= require common

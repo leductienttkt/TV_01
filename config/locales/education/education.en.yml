@@ -1,26 +1,61 @@
 en:
   education:
+    base:
+      user_blocked: "You are blocked in this site."
     javascripts:
       training_alert: "Are you sure ?"
       project_alert: "Are you sure ?"
+      feedback_alert: "Are you sure ?"
+      active_alert: "will be actived?"
+      block_alert: "will be blocked?"
+      detete_category: "Are you sure?"
+    shared:
+      page_title:
+        edit_button: "Edit"
     layouts:
+      nav_filter:
+        show_all: "Show all"
+        more: "More"
       footer:
-        copyright: "Copyrights &copy; 2014 All Rights Reserved by Canvas Inc."
+        tools: "More tools"
+        copyright: "&copy; 2017 Framgia Human Development Div Education Section - All rights reserved."
         tearm_of_use: "Terms of Use"
         privacy_policy: "Privacy Policy"
       page_title:
-        member: "Member"
+        member: " Member"
         delete_object: "Are you sure?"
-    header:
-      home: "Home"
-      project: "Projects"
-      posts: "Posts"
-      courses: "Courses"
-      trainings: "Trainings"
-      trainees: "Trainees"
-      search: "Type & Hit Enter.."
-      feedback: "Feedback"
+      header_management:
+        abouts: "About us"
+        permissions: "Permissions"
+        feedbacks: "Feedbacks"
+        learning_programs: "Learning Programs"
+        techniques: "Techniques"
+        group_users: "Group Users"
+        users: "Users"
+        categories: "Categories"
+      header:
+        home: "Home"
+        portfolio: "Portfolio"
+        project: "Projects"
+        posts: "Posts"
+        courses: "Courses"
+        trainings: "Trainings"
+        trainees: "Trainees"
+        search: "Type & Hit Enter.."
+        feedback: "Feedback"
+        trainers: "Trainers"
+        profile: "Profile"
+        log_out: "Logout"
+        log_in: "Login"
+        create_new_post: "Create new post"
+        management: "Management"
     trainers:
+      trainer:
+        trainer_title: "Trainer"
+      index:
+        home: "Home"
+        trainer_description: "All trainer of education Framgia"
+        trainer_title: "Trainer"
       index_project:
         placeholder_search: "Enter your search"
         add_project: "Add new project"
@@ -34,52 +69,66 @@ en:
         search_placeholder: "Enter your search"
       show_course:
         add_member: "Add member"
+        edit_course: "Edit course"
+        delete_course: "Delete course"
+        confirm_delete: "Are you sure?"
     home:
+      slider:
+        welcome: "Welcome to Framgia Awesome Academy"
+        description: "Your huge potential + Real-world practice = The win</br>
+                      Stay here with Framgia Awesome Academy and carry your ability out to the world"
+      learning_programs:
+        header: "Traning Paths"
+      our_projects:
+        see_more: "See more"
       introduction_video:
         before_heading: "Easily Understandable & Customizable."
-        heading: "Walkthrough Videos & Demos"
-        description: "Democracy inspire breakthroughs, Rosa Parks; inspiration raise awareness natural resources. Governance impact; transformative donation philanthropy, respect reproductive."
+        heading: "Here we are!"
+        description: "Whatever we do, we make it awsome. Whenever you trust us, you take up to the next level."
       statistics:
         course: "Courses"
         trainee: "Trainees"
         trainer: "Trainers"
       features:
-        responsive_layout: "Responsive Layout"
-        responsive_layout_des: "Powerful Layout with Responsive functionality that can be adapted to any screen size."
-        graphics: "Retina Ready Graphics"
-        graphics_des: "Looks beautiful & ultra-sharp on Retina Displays with Retina Icons, Fonts & Images."
-        performance: "Powerful Performance"
-        performance_des: "Optimized code that are completely customizable and deliver unmatched fast performance."
-        html5_video: "HTML5 Video"
-        html5_video_des: "Canvas provides support for Native HTML5 Videos that can be added to a Full Width Background."
-        parallax_support: "Parallax Support"
-        parallax_support_des: "Display your Content attractively using Parallax Sections that have unlimited customizable areas."
-        endless_possibilities: "Endless Possibilities"
-        endless_possibilities_des: "Complete control on each & every element that provides endless customization possibilities."
+        mentoring: "Mentoring"
+        mentoring_des: "Orient trainees to accumulate knowledge in the most effective way. Programming knowledge, methodology as well as skills at work are conveyed to maximize your own performance in IT industry"
+        coaching: "Coaching"
+        coaching_des: "We help trainees to learn, apply lessons and unlock their potential on their own rather than teaching them. Moreover, our trainers will closely monitor every piece of work them have done, give the real time feedback and keep the active interact among team."
+        job_rotation: "Job Rotation"
+        job_rotation_des: "In project phase, trainees are in charge of structuring and implementing the whole project from building up functions, mapping database designing user interface to deploying on server. The cross-training is aimed to expose trainees to different experiences and wider variety of skills that will help enhance their performance then."
+        job_instructual_training: "Job instructual Training"
+        job_instructual_training_des: "To gain the hands-on experience, trainees work with our trainer on some important tasks which are broken down into smaller steps to help them easily understand and complete"
+        understudy: "Understudy"
+        understudy_des: "In a short period of time, our trainees will access to the full responsibility of important roles in team. Quick responses to bottlenecks, time management, effective communication, etc are all required to successfully carry out projects."
+        apprenticeship: "Apprenticeship"
+        apprenticeship_des: "Our trainees will do a real job alongside experienced professionals. Learn from them and apply it all right into their work. "
         color_schemes: "Light & Dark Color Schemes"
         color_schemes_des: "Change your Website's Primary Scheme instantly by simply adding the dark class to the body."
         layouts: "Boxed & Wide Layouts"
         layouts_des: "Stretch your Website to the Full Width or make it boxed to surprise your visitors."
         documentation: "Extensive Documentation"
         documentation_des: "We have covered each & everything in our Documentation including Videos & Screenshots."
+      our_techniques:
+        title: "Technology"
+        introduce: "We always stay up-to-date with almost the current languages and platforms, and therefore what our trainees develop will surely suit the full spectrum of devices around the world."
       need_content:
-        header: "Optimized for Mobile & Touch Enabled Devices."
-        description1: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero quod consequuntur quibusdam, enim expedita sed quia nesciunt incidunt accusamus necessitatibus modi adipisci officia libero accusantium esse hic, obcaecati, ullam, laboriosam!"
+        header: "Real-world and comprehensive training program"
+        description1: "Most of the successful technology products which have been widely used on market were created by well-known IT companies or long-year experience developers. But here at Framgia Awesome Academy, we belive more than that. Anybody with passion, clear direction as well as an effective approach can build up the software that can be applied in many aspects of society. Thus, coaching and learning must be meet the reality and all the product made by Framgia Awesome Academy not only help trainees gain the deep insight of high tech but also live up to society demand. As the result, trainees will be equipped with comprehensive vision and key skill set to reinforce their competence on the dynamic IT market nowadays."
         description2: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti vero, animi suscipit id facere officia. Aspernatur, quo, quos nisi dolorum aperiam fugiat deserunt velit rerum laudantium cum magnam."
         learn_more: "Learn more"
       clients_say:
-        title: "Client's say"
-        client1_say: "Similique fugit repellendus expedita excepturi iure perferendis provident quia eaque. Repellendus, vero numquam?"
-        client1_name: "Steve Jobs"
-        client1_company: "Apple Inc."
-        client2_say: "Natus voluptatum enim quod necessitatibus quis expedita harum provident eos obcaecati id culpa corporis molestias."
-        client2_name: "Collis Ta'eed"
-        client2_company: "Envato Inc."
-        client3_say: "Incidunt deleniti blanditiis quas aperiam recusandae consequatur ullam quibusdam cum libero illo rerum!"
-        client3_name: "John Doe"
-        client3_company: "XYZ Inc."
+        title: "Testimonials"
+        client1_say: "We weren't even more satisfied with Framgia Awesome Academy. An informative program but also very down -to- earth. A professional training service, but also unique."
+        client1_name: "- Teamlab -"
+        client1_company: "- Tech company -"
+        client2_say: "Thanks to Framgia Awesome Academy! Our students have had so many wonderful experiences in there. From now on, with all those insights, they found empowered to enter the real working environment at high-tech companies."
+        client2_name: "- Hanoi University of Science and Technology -"
+        client2_company: "- University - "
+        client3_say: "It was really excellent. All the knowledge and skills I learned were practical and keep me making progress every day. I am now a software engineer for the company I did dream of. I fell confident to apply all the lessons learned form Framgia Awesome Academy to boldly go forward on my career."
+        client3_name: "- Doan -"
+        client3_company: "- Graduated trainee -"
       our_team:
-        title: "Meet our team"
+        title: "Our team"
         team_member1_name: "John Doe"
         team_member1_role: "CEO"
         team_member2_name: "Josh Clark"
@@ -88,8 +137,9 @@ en:
         team_member3_role: "Sales"
         team_member4_name: "Nix Maxwell"
         team_member4_role: "Support"
+        team_member_trainer: "Trainer"
       lastest_courses:
-        last_courses: "Last courses"
+        last_courses: "Upcoming courses"
     trainings:
       training_not_found: "Training Not Found."
       index:
@@ -97,12 +147,15 @@ en:
         title: "Education Trainings"
         home: "Home"
         page_title: "All Trainings"
-        techniques: "Techniques"
-        view_courses: "View list courses"
+        filter: "Filter"
         hot: "Hot"
         search_placeholder: "Search..."
         show_all: "Show all"
         more: "More"
+        not_found: "Training Not Found."
+      trainings:
+        techniques: "Techniques"
+        view_courses: "View list courses"
       show:
         not_found: "The training could not be found"
         home: "Home"
@@ -112,8 +165,13 @@ en:
         share: "Share"
         all_courses: "All Courses"
         view_courses: "View all courses"
+        edit_training: "Edit Training"
       new:
         create_training: "Create"
+        heading: "heading"
+        heading_description: "heading description"
+      new_training:
+        create_new_training: "Create a new training"
       edit:
         update_project: "Update"
       update:
@@ -125,9 +183,13 @@ en:
         training_delete_fail: "Fail to delete training."
         deleted_success: "Deleted training successfully!"
       form:
+        add_image: "Add image"
         description: "Description"
         name: "Name"
+        choose_technique: "Choose techniques"
     projects:
+      form:
+        choose_technique: "Choose techniques"
       index:
         placeholder_search: "Enter your search"
         home: "Home"
@@ -157,9 +219,12 @@ en:
       list_users:
         position: "Position"
       not_found: "Project not found"
+      edit_project: "Edit Project"
     project_members:
+      create:
+        success: "Add member successfully!"
       destroy:
-        destroy_success: "Deleted project successfully"
+        success: "Delete member successfully!"
         destroy_faild: "Cannot delete project"
       load_course:
         not_found: "Project not found"
@@ -176,12 +241,20 @@ en:
         add_image: "Add a image"
         save: "Save"
         reset: "Reset"
+        select_date: "Select Date"
       image_fields:
         remove: "Remove"
       new:
         new: "Create new Course"
+        heading: "Create new course"
+        heading_description: "Heading description"
+      new_course:
+        new: "Create a new course"
+        new_description: "Create a new course description"
+        new_title: "Create a new course title"
       edit:
         edit: "Edit Course"
+        update_course: "Update Course"
       course:
         delete: "Delete"
         edit: "Edit"
@@ -207,14 +280,17 @@ en:
         delete: "Delete"
         delete_confirm: "Are you sure?"
       search_form:
-        search_all: "All Trainings"
-        search: "Search Course"
+        show_all: "Show all"
       index:
+        home: "Home"
         no_courses: "Not found any course"
+        page_title: "All Courses"
+        course: "Courses"
+        filter: "Filter"
+        search: "Search courses"
       detail_course:
         start_date: "Start date : "
         end_date: "End date : "
-      detail_course:
         course_info: "Course info"
       connection_course:
         techniques: "Techniques"
@@ -227,9 +303,11 @@ en:
        new_success: "Created new technique successfully"
        new_faild: "Cannot create new technique"
       edit:
-        edit_technique: "Edit technique"
+        edit_technique: "Edit Technique"
+        update_technique: "Update Technique"
       update:
         technique_updated_successfully: "Updated technique successfully"
+        update_fail: "Cannot Upload Technique"
       destroy:
         technique_deleted: "Deleted technique successfully"
         technique_delete_fail: "Cannot delete technique"
@@ -241,9 +319,25 @@ en:
     course_members:
       create:
         add_fail: "Cannot add member"
-      delete:
+        success: "Add member successfully!"
+      destroy:
         delete_fail: "Cannot detele member"
+        success: "Delete member successfully!"
       not_found: "Course member not found"
+      index:
+        show_all: "Show all"
+        techniques: "Techniques"
+        courses: "Courses"
+        show_all_course: "All Courses in Framgia"
+        training_program: "Training program"
+        language_program: "Language program"
+      other_course:
+        other_courses: "other courses"
+      connection_course:
+        facebook: "Facebook"
+        twitter: "Twitter"
+        photos: "Images"
+        techniques: "Techniques"
     posts:
       title: "Member's Posts"
       title_des: "Lastest posts of our Members"
@@ -252,9 +346,27 @@ en:
       create_new: "Create new post"
       older: "&larr;Older"
       newer: "Newer &rarr;"
+      post:
+        read_more: "Read more"
+        delete_confirm: "Are you sure?"
+        delete: "Delete"
+      index:
+        no_posts: "No posts found"
+        posts: "Posts"
+        search_placeholder: "Search"
+        show_all: "Show all"
+        more: "More"
+        placeholder_search: "Search"
+        title_description: "Lastest posts of our Members"
+        title: "Member's posts"
+        filter: "Filter"
+      nav_search:
+        new: "Create new post"
+        show_all: "Show all"
+        keyword: "Search"
       show:
         follow_us_on_twitter: "Follow Us on Twitter"
-        share_this_post: "Share this Post:"
+        share_this_post: "Share Post:"
         posted_by: "Posted by"
         related_posts: "Related Posts:"
         popular: "Popular"
@@ -264,8 +376,10 @@ en:
         heading_description: "Our Latest News in Masonry Layout"
         name: "Name"
         email: "Email"
+        delete: "Delete"
+        edit: "Edit"
       share_post:
-        share_this_post: "Share this post"
+        share_this_post: "Share post"
       posted_by:
         posted_by: "Posted by"
       comments:
@@ -298,6 +412,8 @@ en:
         courses: "Courses"
         user_not_found: "User not found."
         page_not_found: "Page not found."
+        activities: "Activities"
+        blocked: "This user is blocked!"
       right_column:
         profile: "Profile"
         about_me: "About me"
@@ -319,7 +435,65 @@ en:
         twitter: "Twitter"
         photos: "Photos"
         techniques: "Techniques"
+      post:
+        delete: "Delete"
+        delete_confirm: "Are you sure?"
+        edit: "Edit"
+    rates:
+      create:
+        create_error: "rate unsuccessful"
+      rate:
+        rating: "Rating"
+        your_rating: "Your rating"
+        thanks_title: "Thanh you"
+        thanks: "Thank for rating!"
+      score:
+        rating: "Rating"
+        votes: "(%{count} votes)"
+      load_object:
+        not_found: "Not found"
     management:
+      group_users:
+        index:
+          title: "Group user management"
+          title_description: "Group user management and more"
+        destroy:
+          remove_success: "Successfully removed"
+          group_not_found: "Group not found"
+          user_not_found: "User not found"
+          remove_failed: "Remove failed"
+        create:
+          add_success: "Successfully added"
+          group_not_found: "Group not found"
+          user_not_found: "User not found"
+          add_failed: "Add failed"
+        users:
+          name: "Name"
+          email: "Email"
+          add_user: "Add user to group"
+          remove: "Remove"
+        add_user_modal:
+          choose_all: "Choose all"
+          add: "Add to group"
+          close: "Close"
+          search: "Search"
+        list_groups:
+          placeholder_search: "Search"
+        at_least_one: "Please choose at least one user"
+      feedbacks:
+        index:
+          name: "Name"
+          email: "Email"
+          subject: "Subject"
+          content: "Content"
+          phone_number: "Phone"
+          destroy: "delete"
+          title: "Feedback"
+          title_description: "Manage feedbacks for education of our Framgia Awesome Academy"
+        destroy:
+          deleted_success: "Deleted feedback successfully!"
+          feedback_delete_fail: "Delete failed"
+          feedback_not_found: "Feedback not found"
       abouts:
         edit:
           title: "Update infomation"
@@ -330,3 +504,99 @@ en:
         index:
           edit_button: "Update"
           preview: "Preview"
+          title: "Introduce Framgia Awesome Academy"
+          title_description: "Update your introduction"
+      groups:
+        index:
+          title: "Groups Permissions"
+          title_description: "Manage permissions of all groups of our Framgia Awesome Academy"
+        list_permissions:
+          placeholder_search: "Enter your search"
+          object: "Object"
+          create: "Create"
+          read: "Read"
+          update: "Update"
+          destroy: "Destroy"
+          save: "Save your changes"
+      permissions:
+        create:
+          success: "Update successfully!"
+          fail: "Update failed!"
+          not_found: "Permission not found!"
+      learning_programs:
+        index:
+          title: "Traning Paths"
+          title_description: "Framgia Awesome Academy's training paths"
+          name: "Name"
+          description: "Description"
+          setting: "Setting"
+        learning_program:
+          edit: "Edit"
+          delete: "Delete"
+        edit:
+          title: "Update"
+          save: "Save your changes"
+        update:
+          success: "Update successfully"
+          fail: "Update failed"
+          not_found: "Traning path not found"
+      users:
+        index:
+          title: "Users Management"
+          title_description: "Manage users of Framgia Awesome Academy"
+        list:
+          name: "Name"
+          email: "Email"
+          status: "Status"
+          group: "Group"
+          action: "Action"
+          show_details: "Show detais"
+        search_form:
+          placeholder: "Enter name or email ..."
+        import:
+          title: "Import users from Excel file"
+          submit: "Import"
+        update:
+          not_found: "User not found"
+          success: "Update successfully"
+          fail: "Update failed"
+        create:
+          success: "Users imported."
+      categories:
+        index:
+          title: "Categories Management"
+          title_description: "Manage all categories of Framgia Education"
+          add: "Add new category"
+        list:
+          name: "Name"
+          setting: "Setting"
+        category:
+          edit: "Edit"
+          delete: "Delete"
+        search_form:
+          placeholder: "Enter category ...."
+        new_category:
+          title: "Add new category"
+          close: "Close"
+          save: "Save"
+          name: "Name"
+        create:
+          success: "Created successfully!"
+          fail: "Created failed!"
+        update:
+          not_found: "Category not found!"
+          success: "Updated successfully!"
+          fail: "Updated failed!"
+        destroy:
+          not_found: "Category not found!"
+          success: "Deleted successfully!"
+          fail: "Deteted failed!"
+    time:
+      formats:
+        date_month_year: "%d/%m/%Y"
+    user_status:
+      blocked: "Blocked"
+      active: "Active"
+    import_user:
+      unknow_format: "Unknow file type"
+      row_error: "Error in row"

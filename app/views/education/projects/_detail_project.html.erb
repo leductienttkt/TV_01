@@ -2,12 +2,19 @@
   <div class="content-wrap content-wrap-custom">
     <div class="container-fluid clearfix">
       <div class="col_two_third portfolio-single-image nobottommargin">
-        <%= load_image project %>
+        <div class="fslider" data-arrows="false" data-animation="fade">
+          <div class="flexslider">
+            <div class="slider-wrap">
+              <%= render "education/shared/load_images_slider",
+                object: project %>
+            </div>
+          </div>
+        </div>
         <div class="divider divider-center divider-custom">
           <i class="icon-circle"></i>
         </div>
-        <%= render "list_members", 
-          project: project, project_members: project_members %>
+        <%= render "list_members",
+          project: project, show_projects: show_projects %>
       </div>
       <div class="col_one_third portfolio-single-content col_last portfolio-single-content-custom">
         <div class="fancy-title title-bottom-border">
@@ -31,9 +38,14 @@
           </p>
           <%= render "read_more", project: project %>
         </div>
+        <div class="clearfix">
+          <%= render "education/rates/score", object: project %>
+          <%= render "education/rates/rate", rateable_id: project.id,
+            rateable_type: Education::Project.name, rate: rate %>
+        </div>
         <div class="si-share share-custom clearfix">
           <div>
-            <span><%= t ".share" %></span>
+            <span class="label-share"><%= t ".share" %></span>
           </div>
           <div>
             <%= social_share_button_tag project.name %>
@@ -93,17 +105,17 @@
       <% if user_signed_in?%>
         <div class="comment-errors"></div>
         <%= render partial: "education/comments/comment_form",
-          locals: {project: @project} %>
+          locals: {project: project} %>
       <% end %>
     </div>
     <h3 id="comments-title" class="comments-title"><span class="comment-count">
-      <%= @project.comments.size %></span><%= t "comment.comment_count" %>
+      <%= project.comments.size %></span><%= t "comment.comment_count" %>
     </h3>
     <div class="all-comment" id="all-comment">
-      <%= render @show_projects.comments %>
+      <%= render show_projects.comments %>
     </div>
     <div class="load-more-button">
-      <%= link_to_next_page @show_projects.comments, t("comment.more_comment"),
+      <%= link_to_next_page show_projects.comments, t("comment.more_comment"),
         remote: true, id: "load-more",
         class: "button button-3d button-teal button-small nobottommargin tada animated" %>
     </div>

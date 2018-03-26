@@ -4,6 +4,8 @@ RSpec.describe Employer::JobsController, type: :controller do
   let(:admin){FactoryGirl.create :user, role: 1}
   let(:company){FactoryGirl.create :company}
   let!(:job){FactoryGirl.create :job, company_id: company.id}
+  arr_id_success = [1, 2]
+  arr_id_fail = [998, 999]
 
   before :each do
     allow(controller).to receive(:current_user).and_return admin
@@ -15,6 +17,13 @@ RSpec.describe Employer::JobsController, type: :controller do
     it "populates an array of jobs" do
       get :index, params: {company_id: company}
       expect(assigns(:jobs)).to include job
+    end
+
+    it "filter jobs with request xhr, populates an array of jobs" do
+      get :index, params: {company_id: company, type: "status", sort: "ASC",
+        array_id: [1, 2, 3], page: 1}, xhr: true
+      expect(response).to render_template("employer/jobs/_job")
+      expect(response).to render_template("employer/jobs/_paginate")
     end
 
     it "responds successfully with an HTTP 200 status code" do
@@ -36,7 +45,6 @@ RSpec.describe Employer::JobsController, type: :controller do
       expect do
         post :create, params: {company_id: company, job: job_params}
       end.to change(Job, :count).by 1
-      expect(flash[:success]).to be_present
     end
 
     it "create job only preview" do
@@ -45,7 +53,6 @@ RSpec.describe Employer::JobsController, type: :controller do
         post :create, params: {company_id: company, preview: "Preview",
           job: job_params}
       end.to change(Job, :count).by 1
-      expect(flash[:success]).to be_present
     end
 
     it "create fail with title nil" do
@@ -53,16 +60,14 @@ RSpec.describe Employer::JobsController, type: :controller do
       expect do
         post :create, params: {company_id: company, job: job_params}
       end.to change(Job, :count).by 0
-      expect(flash[:danger]).to be_present
     end
 
     it "create fail by reaching length limitation" do
-      title = FFaker::Lorem.paragraph
+      title = "a" * 151
       job_params = FactoryGirl.attributes_for :job, title: title
       expect do
         post :create, params: {company_id: company, job: job_params}
       end.to change(Job, :count).by 0
-      expect(flash[:danger]).to be_present
     end
 
     it "create fail with describe nil" do
@@ -70,38 +75,50 @@ RSpec.describe Employer::JobsController, type: :controller do
       expect do
         post :create, params: {company_id: company, job: job_params}
       end.to change(Job, :count).by 0
-      expect(flash[:danger]).to be_present
     end
   end
 
   describe "PUT #update" do
-    it "update successfully" do
+    it "update successfully with json" do
       job_params = FactoryGirl.attributes_for :job, title: "something"
-      put :update, params: {company_id: company, id: job, job: job_params}
+      put :update, params: {company_id: company, id: job, job: job_params},
+        xhr: true
       job.reload
-      expect(job.title).to eq "something"
-      expect(flash[:success]).to be_present
+      expect(response).to have_http_status 200
     end
 
-    it "update fail" do
-      title = FFaker::Lorem.paragraph
-      job_params = FactoryGirl.attributes_for :job, title: title
-      put :update, params: {company_id: company, id: job, job: job_params}
-      expect(flash[:danger]).to be_present
+    it "update successfully" do
+      job_params = FactoryGirl.attributes_for :job, title: "something"
+      put :update, params: {company_id: company, id: job, job: job_params},
+        xhr: false
+      job.reload
+      expect(response).to redirect_to job
+    end
+
+    it "update fail with title nil" do
+      job_params = FactoryGirl.attributes_for :job, title: nil
+      put :update, params: {company_id: company, id: job, job: job_params},
+        xhr: false
+      job.reload
     end
   end
 
   describe "DELETE #destroy" do
     context "delete successfully" do
-      before{delete :destroy, params: {company_id: company, id: job}}
+      before{delete :destroy, params: {company_id: company, ids: arr_id_success}}
       it{expect{response.to change(Job, :count).by -1}}
     end
 
     it "delete fail" do
       allow_any_instance_of(Job).to receive(:destroy).and_return(false)
       expect do
-        delete :destroy, params: {company_id: company, id: job}
+        delete :destroy, params: {company_id: company, ids: arr_id_fail}
       end.not_to change(Job, :count)
+    end
+
+    it "responds successfully with an HTTP 200 status code" do
+      delete :destroy, params: {company_id: company, ids: arr_id_success}, xhr: true
+      expect(response).to have_http_status 200
     end
   end
 end

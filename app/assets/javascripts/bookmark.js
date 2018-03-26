@@ -10,12 +10,14 @@ var bookmark = {
 
   add_bookmark: function() {
 
-    $('body').on('click', '.add_bookmark', function() {
+    $('body').on('click', '.add-bookmark', function() {
       var self = $(this);
       var job = $(this).attr('id');
       $.post('/bookmarks/', {id: job}, function() {
-        self.removeClass('add_bookmark btn-default')
-          .addClass('rm_bookmark btn-danger');
+        self.removeClass('add-bookmark')
+          .addClass('btn-bookmarked rm_bookmark');
+        self.prop('title', I18n.t('jobs.bookmark.unbookmark'));
+        self.find('span').text(I18n.t('jobs.bookmark.bookmarked'));
       });
       return false;
     });
@@ -30,11 +32,13 @@ var bookmark = {
         url: '/bookmarks/' + job,
         type: 'DELETE',
         success: function() {
-          self.removeClass('rm_bookmark btn-danger')
-            .addClass('add_bookmark btn-default');
+          self.removeClass('rm_bookmark btn-bookmarked')
+            .addClass('add-bookmark');
+          self.prop('title', I18n.t('jobs.bookmark.bookmark_job'));
+          self.find('span').text(I18n.t('jobs.bookmark.bookmark'));
         }
       });
       return false;
     });
   }
-}
+};

@@ -11,7 +11,7 @@
   }
 }
 
-.portfolio-item {
+.portfolio-item-course {
   .carousel {
     a {
       width: 90%;
@@ -69,4 +69,40 @@
 .latest-course-image {
   height: 180px !important;
   width: 90%;
+}
+
+.training-search.text-field {
+  height: 70px;
+  margin-top: 5px;
+}
+
+.clearfix.course {
+  margin-left: 30px;
+  margin-top: 10px;
+}
+
+.content-course {
+  width: 100%;
+}
+
+.ul-courses {
+  max-height: 300px !important;
+  overflow: auto !important;
+}
+
+.left-field {
+  padding-left: 0;
+}
+
+.right-field {
+  padding-right: 0;
+}
+
+.ui-datepicker.ui-widget-content {
+  border: 1px solid !important;
+}
+
+.course-member-avatar img {
+  height: 158.7px !important;
+  width: 158px !important;
 }

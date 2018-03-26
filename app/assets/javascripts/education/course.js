@@ -1,45 +1,36 @@
 $(document).ready(function() {
-
   $('.datetimepicker').datepicker({
-    dateFormat: 'dd/mm/yy'
+    dateFormat: 'dd-mm-yy'
   });
 
   $('#course_search').on('keyup',function() {
     var course_search = $(this).val();
     var training_id = $('#training_id').val();
-    data = {course_search, training_id}
-    $.get($(this).attr('action'),
-      data, null, 'script');
-  });
-
-  $('#training_id').on('change', function(){
-    var course_search = $('#course_search').val();
-    var training_id = $(this).val();
-    data = {course_search, training_id}
-    $.get($(this).attr('action'),
-      data, null, 'script');
+    var data = {course_search: course_search, training_id: training_id};
+    $.get('/education/courses', data, null, 'script');
   });
 
   $('.course_image_slide').carousel();
 
-  var onAddFile;
-  onAddFile = function(event) {
-    var file, thumbContainer, url;
-    file = event.target.files[0];
-    url = URL.createObjectURL(file);
-    thumbContainer = $(this).parent().siblings('td.thumb');
-    if (thumbContainer.find('img').length === 0) {
-      return thumbContainer.append('<img src="' + url + '" />');
-    } else {
-      return thumbContainer.find('img').attr('src', url);
+  $('#education_training_name').addClass('education-training-name');
+  $('#education_training_description').addClass('education-training-description');
+
+  function readURL(input) {
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
+      reader.onload = function (e) {
+        $(input).parent().siblings('.img_prev').attr('src', e.target.result);
+      };
+      reader.readAsDataURL(input.files[0]);
     }
-  };
-  $('input[type=file]').each(function() {
-    return $(this).change(onAddFile);
+  }
+
+  $(document).on('change', 'input[type=file]', {}, function(e){
+    var _this = e.target;
+    var img_prev = $(_this).parent().siblings('.img_prev');
+    $(img_prev).removeClass('hidden');
+    var image = $(_this).parent().siblings('.current-img');
+    $(image).addClass('hidden');
+    readURL(_this);
   });
-  $('body').on('cocoon:after-insert', function(e, addedPartial) {
-    return $('input[type=file]', addedPartial).change(onAddFile);
-  });
-  $('a.add_fields').data('association-insertion-method', 'append');
-  return $('a.add_fields').data('association-insertion-node', 'table.user-photo-form tbody');
 });
