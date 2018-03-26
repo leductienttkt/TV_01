@@ -1,0 +1,220 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <article class="show-header-user post">
+        <div class="cover-image">
+          <% if user.is_user? current_user %>
+            <%= load_user_cover user, class: "img-cover my-img-cover" %>
+            <div class="ico-upload-cover" data-toggle="modal"
+              data-target="#changeCoverModal">
+              <%= icon "camera" %>
+              <span><%= t ".change_cover" %></span>
+            </div>
+          <% else %>
+            <%= load_user_cover user, class: "img-cover" %>
+          <% end %>
+        </div>
+        <a class="navbar-brand avatar-user" href="#" data-toggle="modal"
+          data-target="#changeAvatarModal">
+          <% if user.is_user? current_user %>
+            <%= load_user_avatar user, class: "img-avatar" %>
+            <div class="icon-upload-avatar">
+              <h3 class="glyphicon glyphicon-camera"></h3>
+            </div>
+          <% else %>
+            <%= load_user_avatar user, class: "img-avatar" %>
+          <% end %>
+        </a>
+        <span class="site-name"><b><%= user.name %></b></span>
+        <span class="site-description"><%= user.email %></span>
+        <div class="request-user">
+          <% if user.is_user? current_user %>
+            <div class="dropdown">
+              <button class="btn btn-default btn-xs dropdown-toggle margin-seven"
+                type="button" data-toggle="dropdown">
+                <span class="glyphicon glyphicon-plus"></span>
+                <span class="hidden-xs"><%= t ".add_profile_section" %></span>
+                <span class="caret hidden-xs"></span>
+              </button>
+              <div class="dropdown-menu add-infomation">
+                <div class="clearfix">
+                  <div class="accordion margin-seven">
+                    <div class="acctitle">
+                      <i class="acc-closed icon-ok-circle"></i>
+                      <i class="acc-open icon-remove-circle"></i>
+                      <%= t ".background" %>
+                    </div>
+                    <div class="acc_content clearfix">
+                      <div class="top-cart-item clearfix add-information-item">
+                        <%= link_to new_user_language_path, remote: true do %>
+                          <i class="i-circled i-light i-small icon-plus"></i>
+                        <% end %>
+                        <div class="top-cart-item-desc">
+                          <b><%= t ".add_language" %></b>
+                          <span class="top-cart-item-price hidden-xs">
+                            <%= t ".add_language_description" %></span>
+                        </div>
+                      </div>
+                      <div class="top-cart-item clearfix add-information-item">
+                        <%= link_to new_user_education_path, remote: true do %>
+                          <i class="i-circled i-light i-small icon-plus"></i>
+                        <% end %>
+                        <div class="top-cart-item-desc">
+                          <b><%= t ".add_education" %></b>
+                          <span class="top-cart-item-price">
+                            <%= t ".add_education_description" %>
+                          </span>
+                        </div>
+                      </div>
+                      <div class="top-cart-item clearfix add-information-item">
+                        <%= link_to new_user_work_path, remote: true do %>
+                          <i class="i-circled i-light i-small icon-plus"></i>
+                        <% end %>
+                        <div class="top-cart-item-desc">
+                          <b><%= t ".add_work" %></b>
+                          <span class="top-cart-item-price">
+                            <%= t ".add_work_description" %>
+                          </span>
+                        </div>
+                      </div>
+                      <div class="top-cart-item clearfix add-information-item">
+                        <%= link_to new_user_project_path, remote: true do %>
+                          <i class="i-circled i-light i-small icon-plus"></i>
+                        <% end %>
+                        <div class="top-cart-item-desc">
+                          <b><%= t ".add_project" %></b>
+                          <span class="top-cart-item-price">
+                            <%= t ".add_project_description" %>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="acctitle">
+                      <i class="acc-closed icon-ok-circle"></i>
+                      <i class="acc-open icon-remove-circle"></i>
+                      <%= t ".skills" %>
+                    </div>
+                    <div class="acc_content clearfix">
+                      <div class="top-cart-item clearfix add-information-item">
+                        <%= link_to new_skill_user_path, remote: true do %>
+                          <i class="i-circled i-light i-small icon-plus"></i><% end %>
+                        <div class="top-cart-item-desc">
+                          <b><%= t ".add_skill" %></b>
+                          <span class="top-cart-item-price">
+                            <%= t ".add_skill_description" %>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="acc_content clearfix">
+                    </div>
+                    <div class="acctitle">
+                      <i class="acc-closed icon-ok-circle"></i>
+                      <i class="acc-open icon-remove-circle"></i>
+                      <%= t ".accomplishments" %>
+                    </div>
+                    <div class="acc_content clearfix">
+                      <div class="top-cart-item clearfix add-information-item">
+                        <%= link_to new_user_portfolio_path, remote: true do %>
+                          <i class="i-circled i-light i-small icon-plus"></i>
+                        <% end %>
+                        <div class="top-cart-item-desc">
+                          <b><%= t ".add_portfolio" %></b>
+                          <span class="top-cart-item-price">
+                            <%= t ".add_portfolio_description" %>
+                          </span>
+                        </div>
+                      </div>
+                      <div class="top-cart-item clearfix add-information-item">
+                        <%= link_to new_award_path, remote: true do %>
+                          <i class="i-circled i-light i-small icon-plus"></i>
+                        <% end %>
+                        <div class="top-cart-item-desc">
+                          <b><%= t ".add_award" %></b>
+                          <span class="top-cart-item-price">
+                            <%= t ".add_award_description" %>
+                          </span>
+                        </div>
+                      </div>
+                      <div class="top-cart-item clearfix add-information-item">
+                        <%= link_to new_user_link_path, remote: true do %>
+                          <i class="i-circled i-light i-small icon-plus"></i>
+                        <% end %>
+                        <div class="top-cart-item-desc">
+                          <b><%= t ".add_link" %></b>
+                          <span class="top-cart-item-price">
+                            <%= t ".add_link_description" %>
+                          </span>
+                        </div>
+                      </div>
+                      <div class="top-cart-item clearfix add-information-item">
+                        <%= link_to new_certificate_path, remote: true do %>
+                          <i class="i-circled i-light i-small icon-plus"></i>
+                        <% end %>
+                        <div class="top-cart-item-desc">
+                          <b><%= t ".add_certificate" %></b>
+                          <span class="top-cart-item-price">
+                            <%= t ".add_certificate_description" %>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <% else %>
+            <div class="margin-seven">
+              <%= render "friend_ship_form", user: user %>
+            </div>
+          <% end %>
+        </div>
+        <div id="mainNav" >
+          <ul class="main-menu user-show">
+            <li class="active">
+              <a data-target="tab-new-feed">
+                <i class="icon-rss2"></i> <b><%= t ".new_feed" %></b>
+              </a>
+            </li>
+            <li>
+              <a data-target="tab-information">
+                <i class="icon-info-sign"> </i><b> <%= t ".information" %></b>
+              </a>
+            </li>
+            <li>
+              <a data-target="tab-posts">
+                <i class="icon-pencil2"></i> <b><%= t ".posts" %></b>
+              </a>
+            </li>
+            <% if user.is_user? current_user %>
+              <li>
+                <a data-target="tab-suggest-job">
+                  <i class="icon-lightbulb"></i> <b><%= t ".job_suggest" %></b>
+                </a>
+              </li>
+              <li>
+                <a data-target="tab-bookmarked-job">
+                  <i class="glyphicon glyphicon-bookmark"></i>
+                  <b><%= t ".bookmarked_jobs" %></b>
+                </a>
+              </li>
+            <% end %>
+            <li>
+              <a data-target="tab-list-friend">
+                <i class="icon-users"></i>
+                <b><%= t ".friends" %>
+                  <% if user.list_friends.present? %>
+                    (<%= user.list_friends.size %>)
+                  <% end %>
+                </b>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </article>
+    </div>
+  </div>
+</div>
+<%= render "change_avatar", user: user if user.is_user? current_user %>
+<%= render "change_cover", user: user if user.is_user? current_user %>
+<div class="render-form-user-skill-modal"></div>

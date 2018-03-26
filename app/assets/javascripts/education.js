@@ -16,30 +16,42 @@
 //= require jquery-ui
 //= require bootstrap-sprockets
 //= require jquery-ui/autocomplete
-//= require education/feedback_map.js
+//= require education/feedback_map
 //= require education/growl.custom
 //= require js-routes
-//= require social-share-button
 //= require education/projects
 //= require cocoon
 //= require education/course
 //= require education/course_member
-//= require education/project_member
 //= require education/users
 //= require education/posts
+//= require education/rates
+//= require education/trainings
+//= require education/techniques
 //= require i18n
 //= require i18n.js
 //= require i18n/translations
+//= require jquery-ui/datepicker
 
-function showEditForm(id) {
-  $.ajax({
-    url: Routes.edit_education_project_path(id) ,
-    type:'GET',
-    dataType: 'json',
-    complete: function(xhr){
-      var html_text = xhr.responseText;
-      $('#show-edit-form').html(html_text);
-      $('#edit-modal').modal('show');
-    }
-  })
+$(document).ready(function(){
+  showEditForm('#btn-project-edit', '/education/projects/');
+  showEditForm('#btn-course-edit', '/education/courses/');
+  showEditForm('#btn-training-edit', '/education/trainings/');
+});
+
+function showEditForm(object, path) {
+  $(object).on('click', function(){
+    var id = $(this).data('id');
+    $.ajax({
+      url: path + id + '/edit' ,
+      type:'GET',
+      dataType: 'json',
+      complete: function(xhr){
+        var html_text = xhr.responseText;
+        $('#show-edit-form').html(html_text);
+        $('#edit-modal').modal('show');
+        $('.datetimepicker').datepicker({dateFormat: 'dd/mm/yy'});
+      }
+    });
+  });
 }

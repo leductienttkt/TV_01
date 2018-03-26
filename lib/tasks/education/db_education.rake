@@ -21,7 +21,7 @@ namespace :education do
       description: Faker::Lorem.sentence)
 
     puts "create About"
-    Education::About.create!(title: "Welcome to Framgia Education",
+    Education::About.create!(title: "Welcome to Framgia Awesome Academy",
       content: "Master your skill. Come with us")
 
     puts "Create Education projects"
@@ -43,6 +43,9 @@ namespace :education do
     puts "Create Education posts"
     Rake::Task["education:make_posts"].invoke
 
+    puts "Create Education feedback"
+    Rake::Task["education:make_feedbacks"].invoke
+
     puts "Create education group user"
     groups = ["Admin", "Trainer", "Trainee", "Guess"]
     groups.each do |group|
@@ -52,6 +55,9 @@ namespace :education do
     puts "Create education group of user"
     admin_edu = User.find_by email: "admin.education@framgia.com"
     Education::UserGroup.create user_id: 1, group_id: 2
+    Education::UserGroup.create user_id: 3, group_id: 2
+    Education::UserGroup.create user_id: 4, group_id: 2
+    Education::UserGroup.create user_id: 5, group_id: 2
     Education::UserGroup.create user_id: 2, group_id: 3
     Education::UserGroup.create user_id: admin_edu.id, group_id: 1
 
@@ -61,6 +67,8 @@ namespace :education do
       Education::Permission.create entry: model, group_id: 1,
         optional: {create: true, read: true, update: true, destroy: true}
     end
+    Education::Permission.create entry: "User", group_id: 1,
+      optional: {create: true, read: true, update: true, destroy: true}
     (2..4).each do |group_id|
       all_education_models.each do |model|
         Education::Permission.create entry: model, group_id: group_id,

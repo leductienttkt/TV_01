@@ -5,17 +5,14 @@ class Education::Management::PermissionsController <
   def create
     permissions_params.each do |id, value|
       permission = find_permission id
-      unless permission
-        render_json t(".not_found"), 400
-        break
-      end
+      return render_json t(".not_found"), 400 unless permission
       if permission.update_attributes optional: value.symbolize_keys
-        render_json t(".success"), 200
+        next
       else
-        render_json t(".fail"), 400
-        break
+        return render_json t(".fail"), 400
       end
     end
+    render_json t(".success"), 200
   end
 
   private
@@ -26,11 +23,5 @@ class Education::Management::PermissionsController <
 
   def find_permission id
     Education::Permission.find_by id: id
-  end
-
-  def render_json message, status_code
-    respond_to do |format|
-      format.json{render json: {flash: message, status: status_code}}
-    end
   end
 end

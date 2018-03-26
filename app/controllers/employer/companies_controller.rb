@@ -3,6 +3,14 @@ class Employer::CompaniesController < Employer::BaseController
   before_action :load_address, :load_industry, only: :edit
 
   def edit
+    @company.images.build
+  end
+
+  def update
+    status = @company.update_attributes(company_params) ? :created : :failed
+    render json: {
+      status: status
+    }
   end
 
   private

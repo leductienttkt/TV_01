@@ -3,12 +3,17 @@ class Education::TrainingsController < Education::BaseController
   load_and_authorize_resource except: [:index, :show]
 
   def index
-    param_q = params[:q]
+    param_training = params[:training_search]
     param_technique_name = params[:technique_name]
     param_page = params[:page]
 
-    @training_object = Supports::Education::Training.new param_q,
+    @training_object = Supports::Education::Training.new param_training,
       param_technique_name, param_page
+
+    respond_to do |format|
+      format.html{request.referer}
+      format.js
+    end
   end
 
   def show
@@ -23,6 +28,7 @@ class Education::TrainingsController < Education::BaseController
   def create
     @training = Education::Training.new training_params
     if @training.save
+      technique_service.add
       flash[:success] = t ".training_created"
       redirect_to education_trainings_path
     else
@@ -32,10 +38,19 @@ class Education::TrainingsController < Education::BaseController
   end
 
   def edit
+    respond_to do |format|
+      format.html
+      format.js do
+        render partial: "education/trainings/form",
+          locals: {training: @training, button_text: t(".update_project")},
+          layout: false
+      end
+    end
   end
 
   def update
     if @training.update_attributes training_params
+      technique_service.update
       flash[:success] = t ".training_updated_successfully"
       redirect_to @training
     else
@@ -68,6 +83,11 @@ class Education::TrainingsController < Education::BaseController
   end
 
   def training_params
-    params.require(:education_training).permit :name, :description
+    params.require(:education_training).permit :name, :description,
+      images_attributes: [:id, :url, :url_cache, :_destroy]
+  end
+
+  def technique_service
+    Education::TrainingTechniqueService.new @training, params
   end
 end

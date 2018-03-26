@@ -8,7 +8,7 @@
       <nav>
         <ul>
           <%= render "education/layouts/nav_filter",
-            {controller_name: "education/projects", techniques: @techniques} %>
+            {controller_name: "education/projects", techniques: techniques} %>
           <li class="project-search">
             <input type="text" id="projects-search-txt" class="form-control"
               placeholder= "<%= t ".placeholder_search" %>" autofocus>
@@ -20,20 +20,30 @@
   </div>
 </div>
 
-<div class="content-wrap nobottompadding custom-wrap create-custom">
+<div class="content-wrap nobottompadding custom-wrap">
   <div id="list-portfolio" class="container clearfix">
-    <%= link_to new_education_project_path, class: "button button-border button-border-thin button-amber" do %>
-      <i class="icon-plus-sign"></i>
-      <%= t ".create_project" %>
-    <% end %>
     <div id="portfolio" class="portfolio grid-container clearfix">
+    <article class="portfolio-item portfolio-item-project pf-media pf-icons">
+        <div class="portfolio-image">
+          <%= image_tag "add_project" %>
+          <div class="portfolio-overlay">
+            <%= link_to new_education_project_path, class: "center-icon" do %>
+              <i class="icon-plus-sign"></i>
+            <% end %>
+          </div>
+        </div>
+        <div class="portfolio-desc">
+          <h3><%= t ".add_project" %></h3>
+          <span><%= t ".creater" %></span>
+        </div>
+      </article>
       <%= render partial: "education/trainers/project",
-        collection: @projects %>
+        collection: projects %>
     </div>
   </div>
 </div>
 <div class="center">
-  <%= paginate @projects %>
+  <%= paginate projects %>
 </div>
 <div class="project-search">
   <div class="results" id="projects-search-results"></div>

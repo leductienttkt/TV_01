@@ -13,12 +13,12 @@ module Supports::Education
     end
 
     def popular_posts
-      Education::Post.popular
+      Education::Post.popular.includes(:translations)
         .limit Settings.education.post.popular_posts_limit
     end
 
     def newest_post
-      Education::Post.created_desc
+      Education::Post.created_desc.includes(:translations)
         .limit Settings.education.post.newest_post_limit
     end
 
@@ -32,6 +32,10 @@ module Supports::Education
 
     def post_tags
       @post.tag_list
+    end
+
+    def get_rate user_id
+      @post.rates.find_by user_id: user_id
     end
   end
 end

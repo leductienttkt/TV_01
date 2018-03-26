@@ -12,9 +12,9 @@ module Education::GeneralHelper
     "current" if params[:technique_name] == technique.name
   end
 
-  def current_path? path
-    "current" if current_page? path
-  end
+  # def current_path? path
+  #   "current" if current_page? path
+  # end
 
   def default_current_path
     "current" unless params[:technique_name] || params[:term]
@@ -22,5 +22,22 @@ module Education::GeneralHelper
 
   def can_manage? object
     can?(:create, object) || can?(:update, object) || can?(:destroy, object)
+  end
+
+  def all_technique
+    Education::Technique.all
+  end
+
+  def learning_icon index
+    icon_array = ["icon-line2-screen-desktop", "icon-line2-energy",
+      "icon-line2-equalizer"]
+    icon_array[index]
+  end
+
+  def is_management?
+    EducationModel.get_all.each do |object|
+      return false unless can_manage? object.constantize
+    end
+    true
   end
 end

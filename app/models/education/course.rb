@@ -1,7 +1,7 @@
 class Education::Course < ApplicationRecord
   translates :detail
 
-  belongs_to :training, class_name: Education::Training.name
+  belongs_to :training, ->{with_deleted}, class_name: Education::Training.name
 
   has_many :course_members, class_name: Education::CourseMember.name,
     foreign_key: :course_id, dependent: :destroy
@@ -12,7 +12,8 @@ class Education::Course < ApplicationRecord
 
   delegate :id, to: :training, prefix: true, allow_nil: true
 
-  validates :name, presence: true
+  validates :name, presence: true,
+    length: {maximum: Settings.education.course.max_name_length}
   validates :detail, presence: true
 
   scope :newest, ->{order created_at: :desc}

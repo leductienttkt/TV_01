@@ -1,9 +1,12 @@
 <% if current_user && can_manage?(Education::Project) %>
-  <%= render "education/layouts/page_title",
+  <%= render "education/shared/page_title",
     {have_member: false,
      btn_object_members: "btn-training-members",
      btn_object_edit: "btn-training-edit",
      object: @training} %>
+
+  <%= render "education/shared/edit_popup",
+    modal_title: t(".edit_training") %>
 <% else %>
   <section id="page-title">
     <div class="container clearfix">
@@ -21,9 +24,14 @@
   <div class="content-wrap">
     <div class="container clearfix">
       <div class="col_two_third portfolio-single-image nobottommargin">
-        <%= link_to "#" do %>
-          <%= image_tag "images/portfolio/4/1.jpg" %>
-        <% end %>
+        <div class="fslider" data-arrows="false" data-animation="fade">
+          <div class="flexslider">
+            <div class="slider-wrap">
+              <%= render "education/shared/load_images_slider",
+                object: @training %>
+            </div>
+          </div>
+        </div>
       </div>
 
       <div class="col_one_third portfolio-single-content col_last nobottommargin">
@@ -38,40 +46,19 @@
         <ul class="iconlist">
           <% @training.techniques.each do |technique| %>
             <li class="display technique-items">
-              <%= link_to education_technique_path technique do %>
+              <%= link_to "#" do %>
                 <i class="icon-ok"></i> <%= technique.name %>
               <% end %>
             </li>
           <% end %>
         </ul>
         <br>
-        <div class="si-share clearfix">
-          <span><%= t ".share" %>:</span>
+        <div class="si-share share-custom clearfix">
           <div>
-            <%= link_to "#", class: "social-icon si-borderless si-facebook" do %>
-              <i class="icon-facebook gray-color"></i>
-              <i class="icon-facebook gray-color"></i>
-            <% end %>
-            <%= link_to "#", class: "social-icon si-borderless si-twitter" do %>
-              <i class="icon-twitter gray-color"></i>
-              <i class="icon-twitter gray-color"></i>
-            <% end %>
-            <%= link_to "#", class: "social-icon si-borderless si-pinterest" do %>
-              <i class="icon-pinterest gray-color"></i>
-              <i class="icon-pinterest gray-color"></i>
-            <% end %>
-            <%= link_to "#", class: "social-icon si-borderless si-gplus" do %>
-              <i class="icon-gplus gray-color"></i>
-              <i class="icon-gplus gray-color"></i>
-            <% end %>
-            <%= link_to "#", class: "social-icon si-borderless si-rss" do %>
-              <i class="icon-rss gray-color"></i>
-              <i class="icon-rss gray-color"></i>
-            <% end %>
-            <%= link_to "#", class: "social-icon si-borderless si-email3" do %>
-              <i class="icon-email3 gray-color"></i>
-              <i class="icon-email3 gray-color"></i>
-            <% end %>
+            <span><%= t ".share" %></span>
+          </div>
+          <div>
+            <%= social_share_button_tag @training.name %>
           </div>
         </div>
       </div>

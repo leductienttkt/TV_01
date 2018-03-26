@@ -5,8 +5,12 @@ class Education::PostsController < Education::BaseController
   before_action :load_post_of_user, only: [:update, :destroy, :edit]
 
   def index
-    @posts = Education::Post.created_desc.includes(:user, :category)
-      .page(params[:page]).per Settings.education.posts.per_page
+    @index_post_object = Supports::Education::IndexPost.new params[:term],
+      params[:page], params[:category], params[:user]
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def new
@@ -46,7 +50,12 @@ class Education::PostsController < Education::BaseController
     else
       flash[:danger] = t ".post_delete_fail"
     end
-    redirect_to education_posts_path
+    @index_post_object = Supports::Education::IndexPost.new params[:term],
+      params[:page], params[:category], params[:user]
+    respond_to do |format|
+      format.html{redirect_to education_posts_path}
+      format.js
+    end
   end
 
   private
@@ -67,7 +76,7 @@ class Education::PostsController < Education::BaseController
   end
 
   def load_post_of_user
-    @post = current_user.education_posts.find_by id: params[:id]
-    not_found unless @post
+    @post = Education::Post.find_by id: params[:id]
+    not_found unless (manage? @post) || (@post.user == current_user)
   end
 end

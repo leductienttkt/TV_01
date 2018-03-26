@@ -4,6 +4,8 @@ require "support/controller_helpers"
 RSpec.describe Education::ProjectsController, type: :controller do
   let(:project){FactoryGirl.create(:project)}
   let(:technique){FactoryGirl.create(:education_technique)}
+  let(:technique1){FactoryGirl.create(:education_technique)}
+  let(:technique2){FactoryGirl.create(:education_technique)}
   let!(:user){FactoryGirl.create(:user)}
   before :each do
     FactoryGirl.create :project_technique, project_id: project.id,
@@ -101,23 +103,17 @@ RSpec.describe Education::ProjectsController, type: :controller do
     context "with valid attributes" do
       it "save new project to database" do
         expect{
-          post :create, params:
-            {education_project: FactoryGirl.attributes_for(:project)}
+          post :create, xhr: true, params:
+            {education_project: FactoryGirl.attributes_for(:project),
+              technique_ids: [technique1.id, technique2.id]}
         }.to change(Education::Project, :count).by 1
-      end
-
-      it "redirects to project detail page" do
-        post :create, params:
-          {education_project: FactoryGirl.attributes_for(:project)}
-        expect(response).to redirect_to(
-          education_project_path(assigns[:project]))
       end
     end
 
     context "with invalid attributes" do
       it "does not save invalid project to database" do
         expect{
-          post :create, params:
+          post :create, xhr: true, params:
             {education_project: FactoryGirl.attributes_for(:invalid_project)}
         }.not_to change(Education::Project, :count)
       end
@@ -136,16 +132,11 @@ RSpec.describe Education::ProjectsController, type: :controller do
 
     context "with valid attributes" do
       it "update project attributes" do
-        patch :update, params: {id: project, education_project:
-          FactoryGirl.attributes_for(:project, name: "New Name")}
+        patch :update, xhr: true, params: {id: project, education_project:
+          FactoryGirl.attributes_for(:project, name: "New Name"),
+          technique_ids: [technique1.id, technique2.id]}
         project.reload
         expect(project.name).to eq "New Name"
-      end
-
-      it "redirects to project detail page" do
-        patch :update, params: {id: project, education_project:
-          FactoryGirl.attributes_for(:project)}
-        expect(response).to redirect_to project
       end
     end
 

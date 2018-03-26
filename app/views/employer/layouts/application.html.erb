@@ -1,24 +1,21 @@
 <!DOCTYPE html>
-<html dir="ltr" lang="en-US">
+<html>
   <head>
     <title><%= full_title yield :title %></title>
-    <%= render "employer/layouts/head" %>
+    <%= render "employer/layouts/employer_head" %>
     <%= render "layouts/shim" %>
   </head>
-  <body class="stretched custom-fixed">
-    <div id="wrapper" class="clearfix">
-      <%= render "employer/layouts/header" %>
-      <div class="container-fluid clearfix">
-        <div class="container clearfix container-margin">
+  <body class="nav-md">
+    <div class="container body">
+      <div class="main_container">
+        <%= render "employer/layouts/employer_header", company: @company %>
+        <div class="right_col" role="main">
           <%= render "shared/flash" %>
-          <%= render "employer/layouts/sidebar" %>
           <%= yield %>
         </div>
+        <%= render "employer/layouts/employer_footer" %>
       </div>
-      <%= render "layouts/footer" %>
     </div>
-
-    <div id="gotoTop" class="icon-angle-up"></div>
-    <%= javascript_include_tag "template" %>
+    <%= javascript_include_tag "employer", "data-turbolinks-track": "reload" %>
   </body>
 </html>

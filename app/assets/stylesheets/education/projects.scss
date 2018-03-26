@@ -172,7 +172,7 @@
 
 .content-detail-project {
   height: 80%;
-  min-height: 280px;
+  min-height: 200px;
 }
 
 .project-member-position {
@@ -183,4 +183,21 @@
 
 .create-custom {
   padding-top: 5px;
+}
+
+.portfolio-item-project {
+  .carousel {
+    a {
+      width: 90%;
+    }
+  }
+
+  img {
+    height: 250px !important;
+  }
+}
+
+.links-form-project {
+  display: inline-table;
+  width: 100%;
 }

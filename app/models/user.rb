@@ -1,10 +1,14 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
-    :recoverable, :rememberable, :trackable, :validatable
+  include ApplyJob
+  include BookmarkJob
 
-  has_many :articles
+  acts_as_follower
+  has_friendship
+  devise :database_authenticatable, :registerable,
+    :recoverable, :rememberable, :trackable, :validatable, :omniauthable
+  has_many :articles, dependent: :destroy
   has_many :education_posts, class_name: Education::Post.name
   has_many :education_socials, class_name: Education::Social.name
   has_many :education_comments, class_name: Education::Comment.name
@@ -27,38 +31,147 @@ class User < ApplicationRecord
     as: :imageable, dependent: :destroy
   has_many :candidates, dependent: :destroy
   has_many :jobs, through: :candidates
+  has_many :created_jobs, class_name: Job.name, dependent: :destroy
   has_many :bookmarks, dependent: :destroy
-  has_one :info_user
+  has_many :bookmarked_jobs, class_name: Job.name, through: :bookmarks,
+    source: :job
+  has_one :info_user, dependent: :destroy
+  has_many :skill_users, dependent: :destroy
+  has_many :skills, through: :skill_users
+  has_many :user_portfolios, dependent: :destroy
+  has_many :awards, dependent: :destroy
+  has_many :user_educations, dependent: :destroy
+  has_many :user_works, dependent: :destroy
+  has_many :organizations, through: :user_works
+  has_many :schools, through: :user_educations, source: :school
+  has_many :shares, class_name: ShareJob.name, dependent: :destroy
+  has_many :shared_jobs, through: :shares, source: :job
+  has_many :user_projects, dependent: :destroy
+  has_many :certificates, dependent: :destroy
+  has_many :user_languages, dependent: :destroy
+  has_one :avatar, class_name: Image.name, foreign_key: :id,
+    primary_key: :avatar_id
+  has_one :cover_image, class_name: Image.name, foreign_key: :id,
+    primary_key: :cover_image_id
+  has_one :user_group, ->{where is_default_group: true},
+    class_name: UserGroup.name
+  has_one :group, class_name: Group.name, through: :user_group, source: :group
+  has_many :companies, foreign_key: :creator_id
+  has_many :user_links, dependent: :destroy
+  has_many :posts, as: :postable
+  has_many :social_networks, as: :owner, dependent: :destroy
+  has_many :comments, dependent: :destroy
+  has_many :likes, dependent: :destroy
+  has_many :share_posts, class_name: ShareJob.name, dependent: :destroy
+  has_many :shared_posts, through: :share_jobs, source: :post
+  has_many :messages
+  accepts_nested_attributes_for :info_user
 
-  delegate :introduce, to: :info_user, prefix: true
+  delegate :introduce, :ambition, :address, :phone, :quote, :info_statuses,
+    to: :info_user, prefix: true
 
-  mount_uploader :avatar, AvatarUploader
-  enum role: [:user, :admin]
+  enum role: [:user, :admin, :employer, :employee]
+  enum education_status: [:blocked, :active], _prefix: true
 
   after_create :create_user_group
 
   validates :name, presence: true,
     length: {maximum: Settings.user.max_length_name}
   validates :email, presence: true
+  validates :education_status, presence: true
+
+  scope :newest, ->{order created_at: :desc}
 
   scope :not_in_object, ->object do
     where("id NOT IN (?)", object.users.pluck(:user_id)) if object.users.any?
   end
 
-  def bookmark job
-    bookmarks.create job_id: job.id
+  scope :in_object, ->object do
+    where("id IN (?)", object.users.pluck(:user_id))
   end
 
-  def unbookmark job
-    bookmarks.find_by(job_id: job.id).destroy
+  scope :of_education, -> do
+    joins(:education_user_groups).distinct
   end
 
-  def apply_job job
-    candidates.create job_id: job.id
+  scope :recommend, ->job_id do
+    select("users.id, users.name, users.avatar_id,
+      skill_users.skill_id, skill_users.level")
+      .joins(:skills).where("skill_users.skill_id IN (?)",
+        Skill.require_by_job(job_id).pluck(:id))
+      .distinct.order("level desc").limit Settings.recommend.user_limit
   end
 
-  def unapply_job job
-    candidates.find_by(job_id: job.id).destroy if job.present?
+  scope :by_active, ->{where education_status: :active}
+
+  class << self
+    def import file
+      (2..spreadsheet(file).last_row).each do |row|
+        value = Hash[[header_of_file(file),
+          spreadsheet(file).row(row)].transpose]
+        user = find_by(id: value["id"]) || new
+        user.attributes = value.to_hash.slice *value.to_hash.keys
+        unless user.save
+          raise "#{I18n.t('education.import_user.row_error')} #{row}: \
+            #{user.errors.full_messages}"
+        end
+      end
+    end
+
+    def open_spreadsheet file
+      case File.extname file.original_filename
+      when ".csv" then Roo::CSV.new file.path
+      when ".xls" then Roo::Excel.new file.path
+      when ".xlsx" then Roo::Excelx.new file.path
+      else raise "#{I18n.t('education.import_user.unknow_format')}: \
+        #{file.original_filename}"
+      end
+    end
+
+    def spreadsheet file
+      open_spreadsheet file
+    end
+
+    def header_of_file file
+      spreadsheet(file).row 1
+    end
+
+    def from_omniauth auth
+      User.find_or_initialize_by(email: auth.info.email).tap do |user|
+        user.name = auth.info.name
+        user.provider = auth.provider
+        user.password = User.generate_unique_secure_token if user.new_record?
+        user.save
+      end
+    end
+  end
+
+  # def default_user_group
+  #   user_groups.default
+  # end
+
+  def is_user? user
+    user == self
+  end
+
+  def send_email_request_friend user
+    FriendRequestMailer.friend_request(self, user).deliver_later
+  end
+
+  def mutual_friends user
+    self.friends & user.friends
+  end
+
+  def mutual_friends_in_lists user_friends
+    self.friends & user_friends
+  end
+
+  def link_social_network type
+    self.social_networks.send(type).first.url if self.social_networks.any?
+  end
+
+  def list_friends
+    friends.includes :avatar
   end
 
   private

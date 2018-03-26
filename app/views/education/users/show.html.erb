@@ -6,7 +6,7 @@
           <div class="row clearfix">
             <div class="col-md-12">
               <div class="tabs tabs-alt clearfix" id="tabs-profile">
-                <ul class="tab-nav clearfix">
+                <ul class="clearfix">
                   <li>
                     <a href="#tab-projects">
                       <i class="icon-folder-open"></i><%= t ".projects" %>
@@ -33,8 +33,10 @@
                 <div class="tab-container">
                   <%= render "projects",
                     projects: @show_user_object.education_projects %>
-                  <%= render "posts",
-                    posts: @show_user_object.education_posts %>
+                  <div class="user-posts">
+                    <%= render "posts",
+                      posts: @show_user_object.education_posts %>
+                  </div>
                   <%= render "courses",
                     courses: @show_user_object.education_courses %>
                   <%= render "activities", activities: @activities if
@@ -44,7 +46,7 @@
             </div>
           </div>
         </div>
-        <%= render "right_column" %>
+        <%= render "right_column", user: @user %>
       </div>
     </div>
   </div>

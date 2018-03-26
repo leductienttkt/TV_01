@@ -1,15 +1,18 @@
 require "redcarpet"
+require "redcarpet/render_strip"
 
 module Education::PostsHelper
   include ActsAsTaggableOn::TagsHelper
 
-  class HTMLwithPygments < Redcarpet::Render::HTML
+  class CodeRayify < Redcarpet::Render::HTML
     def block_code code, language
-      Pygments.highlight(code, lexer: language)
+      language ||= "ruby"
+      CodeRay.scan(code, language).div
     end
   end
+
   def markdown_render content
-    renderer = HTMLwithPygments.new hard_wrap: true, filter_html: true,
+    renderer = CodeRayify.new hard_wrap: true, filter_html: true,
       tables: true
     options = {
       autolink: true,
@@ -25,7 +28,12 @@ module Education::PostsHelper
       emoji: true
     }
 
-    Redcarpet::Markdown.new(renderer, options).render(content)
+    Redcarpet::Markdown.new(renderer, options).render content
+  end
+
+  def markdown_truncate content
+    markdown = Redcarpet::Markdown.new Redcarpet::Render::StripDown
+    markdown.render content
   end
 
   def category_select
@@ -38,5 +46,9 @@ module Education::PostsHelper
     else
       image_tag "default", alt: post.title
     end
+  end
+
+  def is_belong_to_user? post, user
+    (can_manage? post) || (post.user == user)
   end
 end

@@ -17,6 +17,8 @@ RSpec.describe User, type: :model do
       it{expect have_one(:education_program_member)}
       it{expect have_one(:education_learning_program)}
       it{expect have_one(:info_user)}
+      it{expect have_many(:user_works)}
+      it{expect have_many(:organizations)}
     end
 
     context "column_specifications" do
@@ -54,6 +56,20 @@ RSpec.describe User, type: :model do
       project.members.create user_id: user1.id
       users = User.not_in_object(project)
       expect(users).to eq [user2, user3]
+    end
+  end
+
+  describe "get newest user" do
+    let!(:user1){FactoryGirl.create :user, created_at: Time.now}
+    let!(:user2) do
+      FactoryGirl.create :user, created_at: Time.now + 1.hour
+    end
+    let!(:user3) do
+      FactoryGirl.create :user, created_at: Time.now + 2.hours
+    end
+    users = User.newest
+    it "returns ordered list" do
+      expect(users).to eq [user3, user2, user1]
     end
   end
 end

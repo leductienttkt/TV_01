@@ -1,9 +1,12 @@
-//= require_tree ../../../vendor/assets/stylesheets/
 //= require_tree ./variables
 //= require_tree ./employer
-//= require_self
-//= require custom
+//= require sweetalert2
 //= require company_info
+//= require article
+//= require datetimepicker
+//= require jquery.growl
+//= require bootstrap-tagsinput
 
-@import 'bootstrap-sprockets';
-@import 'bootstrap';
+@import 'gentelella';
+@import 'gentelella/gentelella-custom';
+@import 'variables/color';

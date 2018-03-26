@@ -18,8 +18,8 @@ module Supports::Education
         .newest.includes(:images).limit Settings.education.related_project.limit
     end
 
-    def rand_project
-      Education::Project.last.id
+    def rand_project_id
+      Education::Project.ids.sample
     end
 
     def user_ids
@@ -33,12 +33,12 @@ module Supports::Education
     end
 
     def added_users
-      @project.users.search(name_or_email_cont:
+      @project.users.by_active.search(name_or_email_cont:
         @params[:search_added_members]).result
     end
 
     def users
-      User.not_in_object(@project)
+      User.by_active.not_in_object(@project)
         .search(name_or_email_cont: @params[:user_search]).result
     end
 
@@ -50,6 +50,10 @@ module Supports::Education
         end
       end
       user_ids_temp
+    end
+
+    def get_rate user_id
+      @project.rates.find_by user_id: user_id
     end
   end
 end
