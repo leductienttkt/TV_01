@@ -1,0 +1,332 @@
+en:
+  education:
+    javascripts:
+      training_alert: "Are you sure ?"
+      project_alert: "Are you sure ?"
+    layouts:
+      footer:
+        copyright: "Copyrights &copy; 2014 All Rights Reserved by Canvas Inc."
+        tearm_of_use: "Terms of Use"
+        privacy_policy: "Privacy Policy"
+      page_title:
+        member: "Member"
+        delete_object: "Are you sure?"
+    header:
+      home: "Home"
+      project: "Projects"
+      posts: "Posts"
+      courses: "Courses"
+      trainings: "Trainings"
+      trainees: "Trainees"
+      search: "Type & Hit Enter.."
+      feedback: "Feedback"
+    trainers:
+      index_project:
+        placeholder_search: "Enter your search"
+        add_project: "Add new project"
+        creater: "Trainer"
+        create_project: "Create"
+      project:
+        delete_object: "Are you sure?"
+      training:
+        delete_object: "Are you sure?"
+      index_trainings:
+        search_placeholder: "Enter your search"
+      show_course:
+        add_member: "Add member"
+    home:
+      introduction_video:
+        before_heading: "Easily Understandable & Customizable."
+        heading: "Walkthrough Videos & Demos"
+        description: "Democracy inspire breakthroughs, Rosa Parks; inspiration raise awareness natural resources. Governance impact; transformative donation philanthropy, respect reproductive."
+      statistics:
+        course: "Courses"
+        trainee: "Trainees"
+        trainer: "Trainers"
+      features:
+        responsive_layout: "Responsive Layout"
+        responsive_layout_des: "Powerful Layout with Responsive functionality that can be adapted to any screen size."
+        graphics: "Retina Ready Graphics"
+        graphics_des: "Looks beautiful & ultra-sharp on Retina Displays with Retina Icons, Fonts & Images."
+        performance: "Powerful Performance"
+        performance_des: "Optimized code that are completely customizable and deliver unmatched fast performance."
+        html5_video: "HTML5 Video"
+        html5_video_des: "Canvas provides support for Native HTML5 Videos that can be added to a Full Width Background."
+        parallax_support: "Parallax Support"
+        parallax_support_des: "Display your Content attractively using Parallax Sections that have unlimited customizable areas."
+        endless_possibilities: "Endless Possibilities"
+        endless_possibilities_des: "Complete control on each & every element that provides endless customization possibilities."
+        color_schemes: "Light & Dark Color Schemes"
+        color_schemes_des: "Change your Website's Primary Scheme instantly by simply adding the dark class to the body."
+        layouts: "Boxed & Wide Layouts"
+        layouts_des: "Stretch your Website to the Full Width or make it boxed to surprise your visitors."
+        documentation: "Extensive Documentation"
+        documentation_des: "We have covered each & everything in our Documentation including Videos & Screenshots."
+      need_content:
+        header: "Optimized for Mobile & Touch Enabled Devices."
+        description1: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero quod consequuntur quibusdam, enim expedita sed quia nesciunt incidunt accusamus necessitatibus modi adipisci officia libero accusantium esse hic, obcaecati, ullam, laboriosam!"
+        description2: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti vero, animi suscipit id facere officia. Aspernatur, quo, quos nisi dolorum aperiam fugiat deserunt velit rerum laudantium cum magnam."
+        learn_more: "Learn more"
+      clients_say:
+        title: "Client's say"
+        client1_say: "Similique fugit repellendus expedita excepturi iure perferendis provident quia eaque. Repellendus, vero numquam?"
+        client1_name: "Steve Jobs"
+        client1_company: "Apple Inc."
+        client2_say: "Natus voluptatum enim quod necessitatibus quis expedita harum provident eos obcaecati id culpa corporis molestias."
+        client2_name: "Collis Ta'eed"
+        client2_company: "Envato Inc."
+        client3_say: "Incidunt deleniti blanditiis quas aperiam recusandae consequatur ullam quibusdam cum libero illo rerum!"
+        client3_name: "John Doe"
+        client3_company: "XYZ Inc."
+      our_team:
+        title: "Meet our team"
+        team_member1_name: "John Doe"
+        team_member1_role: "CEO"
+        team_member2_name: "Josh Clark"
+        team_member2_role: "Co-Founder"
+        team_member3_name: "Mary Jane"
+        team_member3_role: "Sales"
+        team_member4_name: "Nix Maxwell"
+        team_member4_role: "Support"
+      lastest_courses:
+        last_courses: "Last courses"
+    trainings:
+      training_not_found: "Training Not Found."
+      index:
+        read_more: "Read more"
+        title: "Education Trainings"
+        home: "Home"
+        page_title: "All Trainings"
+        techniques: "Techniques"
+        view_courses: "View list courses"
+        hot: "Hot"
+        search_placeholder: "Search..."
+        show_all: "Show all"
+        more: "More"
+      show:
+        not_found: "The training could not be found"
+        home: "Home"
+        trainings: "Trainings"
+        training_info: "Training info"
+        techniques: "Techniques"
+        share: "Share"
+        all_courses: "All Courses"
+        view_courses: "View all courses"
+      new:
+        create_training: "Create"
+      edit:
+        update_project: "Update"
+      update:
+        training_updated_successfully: "Training updated successfully!"
+      create:
+        training_created: "Training created !"
+        training_create_failed: "Create training failed!"
+      destroy:
+        training_delete_fail: "Fail to delete training."
+        deleted_success: "Deleted training successfully!"
+      form:
+        description: "Description"
+        name: "Name"
+    projects:
+      index:
+        placeholder_search: "Enter your search"
+        home: "Home"
+        header: "Project"
+        filter: "Filter"
+        show_all: "Show all"
+        more: "More"
+        technique_title: "3+ techniques"
+        technique_subtitle: "HTML, Bootstrap, Angularjs..."
+        platform_title: "4+ platform for education"
+        platform_subtitle: "Ruby, PHP, Android, IOS..."
+        total_project_title: "+ project of education"
+        total_project_subtitle: "Total project education of Framgia"
+      destroy:
+        project_delete_fail: "Fail to delete project."
+        deleted_success: "Deleted project successfully!"
+      add_project_member_modal:
+        add_member: "Add Members"
+        manage_member: "Manage Members"
+        search: "Search User by name or email"
+        choose_all: "Choose all"
+        add: "Add"
+        close: "Close"
+      list_added_users:
+        delete: "Delete"
+        delete_confirm: "Are you sure?"
+      list_users:
+        position: "Position"
+      not_found: "Project not found"
+    project_members:
+      destroy:
+        destroy_success: "Deleted project successfully"
+        destroy_faild: "Cannot delete project"
+      load_course:
+        not_found: "Project not found"
+      load_project_member:
+        not_found: "Project member not found"
+    courses:
+      form:
+        name: "Name"
+        detail: "Detail"
+        training: "Training"
+        start_date: "Start day"
+        end_date: "End day"
+        image: "Images"
+        add_image: "Add a image"
+        save: "Save"
+        reset: "Reset"
+      image_fields:
+        remove: "Remove"
+      new:
+        new: "Create new Course"
+      edit:
+        edit: "Edit Course"
+      course:
+        delete: "Delete"
+        edit: "Edit"
+        delete_confirm: "Are you sure?"
+      create:
+        new_success: "Created new course successfully"
+        new_faild: "Cannot create new course"
+      update:
+        update_success: "Updated course successfully"
+        update_faild: "Cannot update course"
+      destroy:
+        destroy_success: "Deleted course successfully"
+        destroy_faild: "Cannot delete course"
+      not_found: "Course not found"
+      add_course_member_modal:
+        add_member: "Add Members"
+        manage_member: "Manage Members"
+        search: "Search User by name or email"
+        choose_all: "Choose all"
+        add: "Add"
+        close: "Close"
+      list_added_users:
+        delete: "Delete"
+        delete_confirm: "Are you sure?"
+      search_form:
+        search_all: "All Trainings"
+        search: "Search Course"
+      index:
+        no_courses: "Not found any course"
+      detail_course:
+        start_date: "Start date : "
+        end_date: "End date : "
+      detail_course:
+        course_info: "Course info"
+      connection_course:
+        techniques: "Techniques"
+      other_course:
+        other_courses: "Other Course"
+    techniques:
+      new:
+        create_technique: "Create technique"
+      create:
+       new_success: "Created new technique successfully"
+       new_faild: "Cannot create new technique"
+      edit:
+        edit_technique: "Edit technique"
+      update:
+        technique_updated_successfully: "Updated technique successfully"
+      destroy:
+        technique_deleted: "Deleted technique successfully"
+        technique_delete_fail: "Cannot delete technique"
+      not_found: "technique not found"
+      edit_button: "Edit"
+      delete_button: "Delete"
+      technique:
+        delete_confirm: "Are your sure?"
+    course_members:
+      create:
+        add_fail: "Cannot add member"
+      delete:
+        delete_fail: "Cannot detele member"
+      not_found: "Course member not found"
+    posts:
+      title: "Member's Posts"
+      title_des: "Lastest posts of our Members"
+      read_more: "Read more"
+      date_format: "%d-%m-%Y"
+      create_new: "Create new post"
+      older: "&larr;Older"
+      newer: "Newer &rarr;"
+      show:
+        follow_us_on_twitter: "Follow Us on Twitter"
+        share_this_post: "Share this Post:"
+        posted_by: "Posted by"
+        related_posts: "Related Posts:"
+        popular: "Popular"
+        recent: "Recent"
+        heading: "Posts"
+        comments: "Comments"
+        heading_description: "Our Latest News in Masonry Layout"
+        name: "Name"
+        email: "Email"
+      share_post:
+        share_this_post: "Share this post"
+      posted_by:
+        posted_by: "Posted by"
+      comments:
+        comments: "Comments"
+        login_to_comment: "Login to comment"
+      comment_item:
+        delete_confirm: "Are you sure to continue?"
+      comment_form:
+        leave_a: "Leave a"
+        comment: "Comment"
+        submit_comment: "Submit Comment"
+        comment_placeholder: "Comment something..."
+        submit_button: "Submit comment"
+      edit_comment_form:
+        edit_button: "Save"
+      twitter_feed:
+        twitter_feed: "Twitter Feed"
+        follow_us_on_twitter: "Follow Us on Twitter"
+      flickr_photo:
+        flickr_photo_stream: "Flickr Photostream"
+      portfolio_coursel:
+        portfolio_coursel: "Portfolio Carousel"
+      tag_cloud:
+        tag_cloud: "Tag Cloud"
+      post_not_found: "Post is not found."
+    users:
+      show:
+        projects: "Projects"
+        posts: "Posts"
+        courses: "Courses"
+        user_not_found: "User not found."
+        page_not_found: "Page not found."
+      right_column:
+        profile: "Profile"
+        about_me: "About me"
+        projects: "Projects"
+        posts: "Posts"
+        courses: "Courses"
+        social_profiles: "Social profiles"
+      index:
+        show_all: "Show all"
+        techniques: "Techniques"
+        courses: "courses"
+        show_all_course: "All studying IT courses at Framgia"
+        training_program: "Training program"
+        language_program: "Language program"
+      other_course:
+        other_courses: "Other courses"
+      connection_course:
+        facebook: "Facebook"
+        twitter: "Twitter"
+        photos: "Photos"
+        techniques: "Techniques"
+    management:
+      abouts:
+        edit:
+          title: "Update infomation"
+          save: "Save your changes"
+        update:
+          success: "Update successfully!"
+          fail: "Update failed!"
+        index:
+          edit_button: "Update"
+          preview: "Preview"

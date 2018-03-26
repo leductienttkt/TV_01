@@ -1,0 +1,24 @@
+<article class="portfolio-item pf-graphics pf-illustrations">
+  <div class="portfolio-image">
+    <% if course.images.any? %>
+      <div class="carousel slide course_image_slide">
+        <div class="carousel-inner" role="listbox">
+          <% course.images.each_with_index do |image, index| %>
+            <div class="<%= index.zero? ? 'item active' : 'item' %>">
+              <%= link_to image_tag(image.url),
+                education_course_path(course) %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <div class="portfolio-desc">
+    <h3><a href="portfolio-single-gallery.html"><%= link_to course.name, education_course_path(course) %></h3>
+    <span title="<%= course.detail %>">
+      <%= truncate course.detail,
+        length: Settings.courses.max_course_detail %>
+      <%= course.training.name %>
+     </span>
+  </div>
+</article>

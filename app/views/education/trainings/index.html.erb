@@ -1,0 +1,103 @@
+<% provide :title, t(".title") %>
+
+<section id="page-title">
+  <div class="container clearfix">
+    <h1><%= t ".page_title" %></h1>
+    <ol class="breadcrumb">
+      <li><%= link_to t(".home"), education_root_path %></li>
+      <li class="active"><%= t ".page_title" %></li>
+    </ol>
+  </div>
+</section>
+
+<% if current_user && can_manage?(Education::Training) %>
+  <%= render "education/trainers/index_trainings" %>
+<% else %>
+  <section id="content">
+    <div id="page-menu">
+      <div id="page-menu-wrap">
+        <div class="container clearfix">
+          <div class="menu-title">
+            <%= t ".training" %>
+            <span> <%= t ".filter" %></span>
+          </div>
+          <nav>
+            <ul>
+              <%= render "education/layouts/nav_filter",
+                {controller_name: "education/trainings",
+                techniques: @training_object.techniques} %>
+              <li class="training-search">
+                <%= search_form_for @training_object.search do |f| %>
+                  <%= f.text_field :name_cont, placeholder: t(".search_placeholder") %>
+                <% end %>
+              </li>    
+            </ul>
+          </nav>
+          <div id="page-submenu-trigger"><i class="icon-reorder"></i></div>
+        </div>
+      </div>
+    </div>
+    <div class="content-wrap">
+      <div class="container clearfix">
+        <div class="content-wrap content-wrap-custom">
+          <div id="portfolio" class="portfolio grid-container portfolio-1 clearfix">
+            <% if @training_object.trainings.any? %>
+              <% @training_object.trainings.each_with_index do |training, index| %>
+              <% if Parity.parity_odd? index %>
+                <article class="portfolio-item pf-illustrations alt clearfix">
+              <% else %>
+                <article class="portfolio-item pf-media pf-icons clearfix">
+              <% end %>
+                  <div class="row">
+                    <div class="portfolio-image">
+                      <%= link_to "#" do %>
+                        <%= image_tag "images/portfolio/4/1.jpg" %>
+                      <% end %>
+                      <div class="portfolio-overlay">
+                        <%= link_to education_training_path training do %>
+                          <i class="icon-eye"></i>
+                        <% end %>
+                      </div>
+                    </div>
+                    <div class="training-infor">
+                      <div class="margin-training-infor">
+                        <h3><b>
+                          <%= link_to education_training_path training do %>
+                            <%= training.name %>
+                          <% end %>
+                        </b></h3>
+                        <p>
+                          <%= truncate training.description,
+                            length: Settings.education.trainings.limit_string %>
+                        </p>
+                        <h4><strong><%= t ".techniques" %></strong></h4>
+                        <ul class="iconlist">
+                          <% training.techniques.each do |technique| %>
+                            <li class="display technique-items">
+                              <%= link_to education_technique_path technique do %>
+                                <i class="icon-ok"></i> <%= technique.name %>
+                              <% end %>
+                            </li>
+                          <% end %>
+                        </ul>
+                        <br>
+                        <%= link_to education_training_path training do %>
+                          <div class="button button-3d button-small button-amber">
+                            <%= t ".view_courses" %>
+                          </div>
+                        <% end %>
+                      </div>
+                    </div>
+                  </div>
+                </article>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="center">
+    <%= paginate @training_object.trainings %>
+  </div>
+<% end %>

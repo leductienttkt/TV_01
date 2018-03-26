@@ -1,0 +1,292 @@
+@import 'variables/color';
+
+// -----Custom Login----
+
+.pnl-login {
+  border-radius: 10px !important;
+  max-width: 400px;
+  padding: 30px;
+}
+
+.login-with-custom {
+  margin-bottom: 15px;
+}
+
+.forgot-password {
+  font-size: 12px;
+}
+
+.list-header-custom li a {
+  color: $black-light !important;
+}
+
+.list-header-custom li a:hover {
+  color: $light-sea-green !important;
+}
+
+.video-overlay {
+  background-color: $lighter;
+}
+
+// -----Custom Header for Dashboard----
+
+.container-margin {
+  margin-left: 0 !important;
+}
+
+.custom-header {
+  background-color: $light-sea-green !important;
+  height: 60px !important;
+
+  .header-wrap-custom,
+  .container {
+    height: 60px !important;
+  }
+
+  .logo-custom img {
+    height: 50px !important;
+  }
+
+  .top-account {
+    margin: 18px 0 0;
+
+    .icon-user,
+    .icon-angle-down {
+      color: $white !important;
+    }
+
+    a {
+      line-height: 0 !important;
+    }
+
+    .drop-custom {
+      margin: 15px 0;
+      padding-bottom: 5px;
+    }
+  }
+
+  .logo-custom {
+    border: 0 !important;
+    padding-right: 0 !important;
+  }
+}
+
+.custom-primary-menu {
+  float: left !important;
+
+  .list-header-custom {
+    border: 0 !important;
+
+    .mega-menu {
+      margin: 5px 4px 8px;
+    }
+  }
+
+  .current > a {
+    background-color: $black-background !important;
+  }
+
+  li:hover > a {
+    background-color: $black-background !important;
+  }
+
+  li > a {
+    border-radius: 20px;
+    color: $white !important;
+    margin: 8px 4px;
+    padding: 5px 10px !important;
+  }
+}
+
+.head-wrap {
+  background: url('welcome1.jpg') center center no-repeat;
+  padding: 200px 0 20px;
+}
+
+.heading-block {
+  h3 {
+    -webkit-font-smoothing: antialiased;
+    font-weight: 600;
+    text-shadow: 0 1px 2px $black-60opacity;
+
+    a {
+      color: $white;
+    }
+  }
+
+  span {
+    font-weight: 300;
+
+    a {
+      color: $white;
+      -webkit-font-smoothing: antialiased;
+      text-shadow: 0 1px 2px $black-30opacity;
+    }
+  }
+}
+
+.topmargin-custom {
+  margin-top: 28px;
+
+  h4 {
+    margin-top: 0;
+  }
+}
+
+.content-wrap-custom-sys {
+  margin: 30px 0 80px;
+}
+
+.btn-follow {
+  border-radius: 100px;
+  font-weight: 600;
+  width: 88px;
+}
+
+.ava-company {
+  max-width: 84px !important;
+}
+
+.sales {
+  border: 1px solid $gray-ddd;
+  border-radius: 3px;
+}
+
+.job-show-cover-wrapper {
+  border: 1px solid $gray-ddd;
+  border-radius: 10px;
+}
+
+.cover-image {
+  border: 1px solid $gray-ddd;
+  border-radius: 10px;
+
+  a img {
+    height: 400px;
+    width: 100%;
+  }
+}
+
+.two-column {
+  .column-main {
+    border-right: 1px solid $gray-ddd;
+    margin: 0;
+    width: 70%;
+  }
+
+  .column-side {
+    margin-top: 10px;
+    width: 30%;
+  }
+}
+
+.column-main {
+  .job-description {
+    margin-top: 30px;
+  }
+
+  .website-company {
+    color: $gray-compa;
+    display: inline-block;
+    font-size: 18px;
+    font-weight: 600;
+    margin-right: 30px;
+    margin-top: 30px;
+    vertical-align: middle;
+  }
+
+  .header-btn .hr-edit {
+    margin-top: 15px;
+  }
+
+  .header-btn {
+    margin-right: 38px;
+  }
+
+  .edit-team-intro {
+    margin-left: 30px;
+    margin-top: 15px;
+  }
+
+  .edit-description {
+    margin-left: 30px;
+    margin-top: 15px;
+  }
+
+  .show-all-staffing {
+    margin-top: 15px;
+  }
+
+  .job-show-main-section .wanted-info {
+    margin-top: 50px;
+  }
+
+  .wanted-info th {
+    background: $white-gray;
+    border: 1px solid $white-gray-table;
+    padding: 14px 24px;
+    text-align: center;
+  }
+
+  .wanted-info .head {
+    border: 1px solid $white-gray-table;
+    font-weight: 600;
+  }
+
+  .cf .lazy {
+    display: inline;
+    height: 130px;
+    width: 130px;
+  }
+
+  .members li {
+    float: left;
+    list-style-type: none;
+    margin: 0 10px;
+    position: relative;
+    width: 150px;
+  }
+}
+
+.header {
+  border-bottom: 1px;
+  height: 80px;
+}
+
+.teal {
+  background-color: $light-teal !important;
+  float: right;
+  margin-right: -100px;
+}
+
+.map {
+  height: 300px;
+  width: 300px;
+}
+
+.location-padding {
+  padding-bottom: 20px;
+}
+
+.team-introduction-2,
+.team-introduction-3 {
+  display: none;
+}
+
+.team-introduction-1,
+.team-introduction-2,
+.team-introduction-3 {
+  border-bottom: 1px solid $silver;
+}
+
+.list-team-introduction {
+  border-bottom: 1px solid $silver;
+}
+
+.message {
+  margin-left: 50px;
+  padding: 10px;
+  position: fixed;
+  width: 30%;
+  z-index: 1000;
+}

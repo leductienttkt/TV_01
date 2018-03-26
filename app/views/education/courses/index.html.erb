@@ -1,0 +1,24 @@
+<div class="row-course">
+  <section id="page-title", class="courses_index">
+    <div class="container clearfix">
+      <h1><%= t ".courses" %></h1>
+      <span>
+        <div class="courses-search col-md-6 col-sm-6"><%= t ".show_all_course" %></div>
+        <div class="col-md-offset-2 col-md-4 col-sm-6"><%= render "search_form" %></div>
+      </span>
+    </div>
+  </section>
+  <br />
+  <section id="content">
+    <div class="content-wrap nopadding", id="tab-courses">
+      <div id="portfolio" class="portfolio portfolio-4 clearfix">
+        <%= render @courses %>
+      </div>
+      <hr/>
+      <div id="next-project" class="read-more" align="center">
+        <%= paginate @courses, remote: true, params: {tab: "tab-courses"} %>
+      </div>
+      <br/>
+    </div>
+  </section>
+</div>
