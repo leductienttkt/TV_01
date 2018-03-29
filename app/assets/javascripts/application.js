@@ -24,7 +24,6 @@
 //= require i18n.js
 //= require i18n/translations
 //= require follow_companies
-//= require education/growl.custom
 //= require_tree ../../../vendor/assets/javascripts/js/components
 //= require social-share-button
 //= require friend_ships
