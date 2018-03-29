@@ -6,8 +6,6 @@ class Post < ApplicationRecord
 
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
-  has_many :share_posts, as: :shareable, class_name: ShareJob.name,
-    dependent: :destroy
 
   validates :title, presence: true, length: {maximum: Settings.post.title_max}
   validates :content, presence: true
