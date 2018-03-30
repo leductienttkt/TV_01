@@ -4,7 +4,6 @@
       <span class="notification-header">
         <% if user_signed_in? %>
           <%= render "friend_ships/friend_request" %>
-          <%= render "jobs/message" %>
         <% end %>
         <span class="dropdown profile">
           <% if user_signed_in? %>
@@ -43,32 +42,11 @@
     </div>
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav text-uppercase">
-        <li><%= link_to t(".home"), root_path, class: "link-menu-header" %></li>
-        <li><%= link_to t(".jobs"), jobs_path, class: "link-menu-header" %></li>
         <% if current_user.present? %>
           <% if current_user.admin? %>
             <li>
               <%= link_to t(".admin"), admin_dashboards_path,
                 class: "link-menu-header" %>
-            </li>
-          <% end %>
-          <% if current_user.companies.any? %>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle text-center" data-toggle="dropdown">
-                <%= t ".employer" %> <b class="caret"></b>
-              </a>
-              <ul class="dropdown-menu">
-                <% current_user.companies.each do |company| %>
-                  <li>
-                    <%= link_to company.name, employer_company_dashboards_path(company) %>
-                  </li>
-                <% end %>
-              </ul>
-            </li>
-            <li>
-              <a href="#" data-toggle="modal" data-target="#createCompany">
-                <%= t ".create_company" %>
-              </a>
             </li>
           <% end %>
         <% end %>
@@ -91,7 +69,6 @@
         <a href="#"><i class="fa fa-instagram"></i></a>
         <% if user_signed_in? %>
           <%= render "friend_ships/friend_request" %>
-          <%= render "jobs/message" %>
         <% end %>
         <span class="dropdown profile" id="none-responsive">
           <% if user_signed_in? %>

@@ -38,14 +38,10 @@ class User < ApplicationRecord
     to: :info_user, prefix: true
 
   enum role: [:user, :admin, :employer, :employee]
-  enum education_status: [:blocked, :active], _prefix: true
-
-  after_create :create_user_group
 
   validates :name, presence: true,
     length: {maximum: Settings.user.max_length_name}
   validates :email, presence: true
-  validates :education_status, presence: true
 
   scope :newest, ->{order created_at: :desc}
 

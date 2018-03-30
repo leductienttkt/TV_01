@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170703035525) do
+ActiveRecord::Schema.define(version: 20170622083528) do
 
   create_table "activities", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "trackable_type"
@@ -26,17 +26,6 @@ ActiveRecord::Schema.define(version: 20170703035525) do
     t.index ["owner_id", "owner_type"], name: "index_activities_on_owner_id_and_owner_type", using: :btree
     t.index ["recipient_id", "recipient_type"], name: "index_activities_on_recipient_id_and_recipient_type", using: :btree
     t.index ["trackable_id", "trackable_type"], name: "index_activities_on_trackable_id_and_trackable_type", using: :btree
-  end
-
-  create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "company_id"
-    t.string   "address"
-    t.float    "longitude",   limit: 24
-    t.float    "latitude",    limit: 24
-    t.boolean  "head_office"
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
-    t.index ["company_id"], name: "index_addresses_on_company_id", using: :btree
   end
 
   create_table "articles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -60,36 +49,6 @@ ActiveRecord::Schema.define(version: 20170703035525) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_awards_on_user_id", using: :btree
-  end
-
-  create_table "benefits", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "company_id"
-    t.string   "name"
-    t.text     "description", limit: 65535
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
-    t.index ["company_id"], name: "index_benefits_on_company_id", using: :btree
-  end
-
-  create_table "bookmarks", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "user_id"
-    t.integer  "job_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["job_id"], name: "index_bookmarks_on_job_id", using: :btree
-    t.index ["user_id"], name: "index_bookmarks_on_user_id", using: :btree
-  end
-
-  create_table "candidates", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "user_id"
-    t.integer  "job_id"
-    t.integer  "interested_in", default: 0
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
-    t.integer  "process",       default: 0
-    t.index ["job_id"], name: "index_candidates_on_job_id", using: :btree
-    t.index ["user_id", "job_id"], name: "index_candidates_on_user_id_and_job_id", unique: true, using: :btree
-    t.index ["user_id"], name: "index_candidates_on_user_id", using: :btree
   end
 
   create_table "certificates", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -130,331 +89,6 @@ ActiveRecord::Schema.define(version: 20170703035525) do
     t.index ["user_id"], name: "index_comments_on_user_id", using: :btree
   end
 
-  create_table "companies", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "name"
-    t.string   "website"
-    t.text     "introduction",   limit: 65535
-    t.string   "founder"
-    t.string   "country"
-    t.integer  "company_size"
-    t.date     "founder_on"
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
-    t.integer  "avatar_id"
-    t.integer  "cover_image_id"
-    t.integer  "creator_id"
-    t.index ["avatar_id", "cover_image_id"], name: "index_companies_on_avatar_id_and_cover_image_id", unique: true, using: :btree
-    t.index ["creator_id"], name: "index_companies_on_creator_id", using: :btree
-    t.index ["name"], name: "index_companies_on_name", using: :btree
-    t.index ["website"], name: "index_companies_on_website", using: :btree
-  end
-
-  create_table "company_industries", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "company_id"
-    t.integer  "industry_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.index ["company_id"], name: "index_company_industries_on_company_id", using: :btree
-    t.index ["industry_id"], name: "index_company_industries_on_industry_id", using: :btree
-  end
-
-  create_table "education_about_translations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "education_about_id",               null: false
-    t.string   "locale",                           null: false
-    t.datetime "created_at",                       null: false
-    t.datetime "updated_at",                       null: false
-    t.string   "title"
-    t.text     "content",            limit: 65535
-    t.index ["education_about_id"], name: "index_education_about_translations_on_education_about_id", using: :btree
-    t.index ["locale"], name: "index_education_about_translations_on_locale", using: :btree
-  end
-
-  create_table "education_abouts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "education_categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.datetime "deleted_at"
-    t.index ["deleted_at"], name: "index_education_categories_on_deleted_at", using: :btree
-  end
-
-  create_table "education_comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "user_id"
-    t.integer  "commentable_id"
-    t.string   "commentable_type"
-    t.text     "content",          limit: 65535
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
-    t.index ["commentable_id", "commentable_type"], name: "index_education_comments_on_commentable_id_and_commentable_type", using: :btree
-    t.index ["user_id"], name: "index_education_comments_on_user_id", using: :btree
-  end
-
-  create_table "education_course_members", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "user_id"
-    t.integer  "course_id"
-    t.integer  "status"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["course_id"], name: "fk_rails_b072c20f95", using: :btree
-    t.index ["user_id"], name: "index_education_course_members_on_user_id", using: :btree
-  end
-
-  create_table "education_course_translations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "education_course_id",               null: false
-    t.string   "locale",                            null: false
-    t.datetime "created_at",                        null: false
-    t.datetime "updated_at",                        null: false
-    t.text     "detail",              limit: 65535
-    t.index ["education_course_id"], name: "index_education_course_translations_on_education_course_id", using: :btree
-    t.index ["locale"], name: "index_education_course_translations_on_locale", using: :btree
-  end
-
-  create_table "education_courses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "name"
-    t.integer  "training_id"
-    t.datetime "start_date"
-    t.datetime "end_date"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.index ["training_id"], name: "fk_rails_c12f7c8b32", using: :btree
-  end
-
-  create_table "education_feedbacks", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "name"
-    t.string   "email"
-    t.text     "content",      limit: 65535
-    t.string   "phone_number"
-    t.string   "subject"
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
-  end
-
-  create_table "education_group_translations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "education_group_id",               null: false
-    t.string   "locale",                           null: false
-    t.datetime "created_at",                       null: false
-    t.datetime "updated_at",                       null: false
-    t.text     "description",        limit: 65535
-    t.index ["education_group_id"], name: "index_education_group_translations_on_education_group_id", using: :btree
-    t.index ["locale"], name: "index_education_group_translations_on_locale", using: :btree
-  end
-
-  create_table "education_groups", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "education_images", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "url"
-    t.integer  "imageable_id"
-    t.string   "imageable_type"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
-    t.index ["imageable_id"], name: "index_education_images_on_imageable_id", using: :btree
-    t.index ["imageable_type"], name: "index_education_images_on_imageable_type", using: :btree
-  end
-
-  create_table "education_learning_program_translations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "education_learning_program_id",               null: false
-    t.string   "locale",                                      null: false
-    t.datetime "created_at",                                  null: false
-    t.datetime "updated_at",                                  null: false
-    t.text     "description",                   limit: 65535
-    t.text     "name",                          limit: 65535
-    t.index ["education_learning_program_id"], name: "index_8b0cacfb59cf9e0162ebe217e09209051f6e9f59", using: :btree
-    t.index ["locale"], name: "index_education_learning_program_translations_on_locale", using: :btree
-  end
-
-  create_table "education_learning_programs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "education_permissions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "entry"
-    t.text     "optional",   limit: 65535
-    t.integer  "group_id"
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
-    t.index ["group_id"], name: "index_education_permissions_on_group_id", using: :btree
-  end
-
-  create_table "education_post_translations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "education_post_id", null: false
-    t.string   "locale",            null: false
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
-    t.string   "title"
-    t.index ["education_post_id"], name: "index_education_post_translations_on_education_post_id", using: :btree
-    t.index ["locale"], name: "index_education_post_translations_on_locale", using: :btree
-  end
-
-  create_table "education_posts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.text     "content",        limit: 65535
-    t.integer  "category_id"
-    t.integer  "user_id"
-    t.string   "cover_photo"
-    t.string   "tags"
-    t.integer  "comments_count",               default: 0, null: false
-    t.datetime "created_at",                               null: false
-    t.datetime "updated_at",                               null: false
-    t.datetime "deleted_at"
-    t.index ["category_id"], name: "fk_rails_067ef7961e", using: :btree
-    t.index ["deleted_at"], name: "index_education_posts_on_deleted_at", using: :btree
-    t.index ["user_id"], name: "index_education_posts_on_user_id", using: :btree
-  end
-
-  create_table "education_program_members", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "user_id"
-    t.integer  "learning_program_id"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
-    t.index ["learning_program_id"], name: "fk_rails_542fa7de2a", using: :btree
-    t.index ["user_id"], name: "index_education_program_members_on_user_id", using: :btree
-  end
-
-  create_table "education_project_members", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "project_id"
-    t.integer  "user_id"
-    t.integer  "position"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["project_id"], name: "fk_rails_117a54e432", using: :btree
-    t.index ["user_id"], name: "index_education_project_members_on_user_id", using: :btree
-  end
-
-  create_table "education_project_techniques", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "project_id"
-    t.integer  "technique_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-    t.datetime "deleted_at"
-    t.index ["deleted_at"], name: "index_education_project_techniques_on_deleted_at", using: :btree
-    t.index ["project_id"], name: "fk_rails_75b39b7be1", using: :btree
-    t.index ["technique_id"], name: "fk_rails_b46263d32d", using: :btree
-  end
-
-  create_table "education_project_translations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "education_project_id",               null: false
-    t.string   "locale",                             null: false
-    t.datetime "created_at",                         null: false
-    t.datetime "updated_at",                         null: false
-    t.text     "description",          limit: 65535
-    t.text     "core_features",        limit: 65535
-    t.text     "release_note",         limit: 65535
-    t.index ["education_project_id"], name: "index_education_project_translations_on_education_project_id", using: :btree
-    t.index ["locale"], name: "index_education_project_translations_on_locale", using: :btree
-  end
-
-  create_table "education_projects", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "name"
-    t.string   "git_repo"
-    t.string   "server_info"
-    t.string   "pm_url"
-    t.boolean  "is_project"
-    t.string   "plat_form"
-    t.integer  "comments_count", default: 0, null: false
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
-    t.datetime "deleted_at"
-    t.index ["deleted_at"], name: "index_education_projects_on_deleted_at", using: :btree
-  end
-
-  create_table "education_rates", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.float    "rate",          limit: 24, default: 0.0
-    t.integer  "user_id"
-    t.integer  "rateable_id"
-    t.string   "rateable_type"
-    t.datetime "created_at",                             null: false
-    t.datetime "updated_at",                             null: false
-    t.index ["rateable_id", "rateable_type"], name: "index_education_rates_on_rateable_id_and_rateable_type", using: :btree
-    t.index ["user_id"], name: "index_education_rates_on_user_id", using: :btree
-  end
-
-  create_table "education_socials", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "name"
-    t.string   "url"
-    t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_education_socials_on_user_id", using: :btree
-  end
-
-  create_table "education_technique_translations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "education_technique_id",               null: false
-    t.string   "locale",                               null: false
-    t.datetime "created_at",                           null: false
-    t.datetime "updated_at",                           null: false
-    t.text     "description",            limit: 65535
-    t.index ["education_technique_id"], name: "index_eceb63ab3bdbe51a9b3eb88ff07c8841a870b817", using: :btree
-    t.index ["locale"], name: "index_education_technique_translations_on_locale", using: :btree
-  end
-
-  create_table "education_techniques", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.datetime "deleted_at"
-    t.index ["deleted_at"], name: "index_education_techniques_on_deleted_at", using: :btree
-  end
-
-  create_table "education_training_techniques", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "training_id"
-    t.integer  "technique_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-    t.datetime "deleted_at"
-    t.index ["deleted_at"], name: "index_education_training_techniques_on_deleted_at", using: :btree
-    t.index ["technique_id"], name: "fk_rails_5d503ace3b", using: :btree
-    t.index ["training_id"], name: "fk_rails_53db417bc2", using: :btree
-  end
-
-  create_table "education_training_translations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "education_training_id",               null: false
-    t.string   "locale",                              null: false
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
-    t.text     "description",           limit: 65535
-    t.index ["education_training_id"], name: "index_education_training_translations_on_education_training_id", using: :btree
-    t.index ["locale"], name: "index_education_training_translations_on_locale", using: :btree
-  end
-
-  create_table "education_trainings", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.datetime "deleted_at"
-    t.index ["deleted_at"], name: "index_education_trainings_on_deleted_at", using: :btree
-  end
-
-  create_table "education_user_groups", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "user_id"
-    t.integer  "group_id"
-    t.boolean  "is_default_group"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
-    t.index ["group_id"], name: "fk_rails_5c5556f283", using: :btree
-    t.index ["user_id"], name: "index_education_user_groups_on_user_id", using: :btree
-  end
-
-  create_table "employees", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "company_id"
-    t.integer  "user_id"
-    t.string   "description"
-    t.date     "start_time"
-    t.integer  "role"
-    t.integer  "status"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.index ["company_id"], name: "index_employees_on_company_id", using: :btree
-    t.index ["user_id"], name: "index_employees_on_user_id", using: :btree
-  end
-
   create_table "follows", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "followable_type",                 null: false
     t.integer  "followable_id",                   null: false
@@ -479,23 +113,6 @@ ActiveRecord::Schema.define(version: 20170703035525) do
     t.index ["friendable_type"], name: "index_friendships_on_friendable_type", using: :btree
   end
 
-  create_table "groups", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "name"
-    t.integer  "company_id"
-    t.text     "description", limit: 65535
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
-    t.index ["company_id"], name: "index_groups_on_company_id", using: :btree
-  end
-
-  create_table "hiring_types", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "name"
-    t.text     "description", limit: 65535
-    t.integer  "status"
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
-  end
-
   create_table "images", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "imageable_id"
     t.string   "imageable_type"
@@ -505,12 +122,6 @@ ActiveRecord::Schema.define(version: 20170703035525) do
     t.datetime "updated_at",                   null: false
     t.index ["imageable_id"], name: "index_images_on_imageable_id", using: :btree
     t.index ["imageable_type"], name: "index_images_on_imageable_type", using: :btree
-  end
-
-  create_table "industries", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "info_users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -525,55 +136,6 @@ ActiveRecord::Schema.define(version: 20170703035525) do
     t.datetime "updated_at",                        null: false
     t.text     "info_statuses",       limit: 65535
     t.index ["user_id"], name: "index_info_users_on_user_id", using: :btree
-  end
-
-  create_table "job_hiring_types", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "job_id"
-    t.integer  "hiring_type_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
-    t.index ["hiring_type_id"], name: "index_job_hiring_types_on_hiring_type_id", using: :btree
-    t.index ["job_id"], name: "index_job_hiring_types_on_job_id", using: :btree
-  end
-
-  create_table "job_skills", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "job_id"
-    t.integer  "skill_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["job_id"], name: "index_job_skills_on_job_id", using: :btree
-    t.index ["skill_id"], name: "index_job_skills_on_skill_id", using: :btree
-  end
-
-  create_table "job_teams", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "job_id"
-    t.integer  "team_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["job_id"], name: "index_job_teams_on_job_id", using: :btree
-    t.index ["team_id"], name: "index_job_teams_on_team_id", using: :btree
-  end
-
-  create_table "jobs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "company_id"
-    t.string   "title"
-    t.string   "describe"
-    t.integer  "type_of_candidates", default: 0
-    t.integer  "who_can_apply",      default: 0
-    t.integer  "status",             default: 0
-    t.datetime "created_at",                        null: false
-    t.datetime "updated_at",                        null: false
-    t.integer  "team_id"
-    t.datetime "deleted_at"
-    t.string   "profile_requests",   default: "[]", null: false
-    t.integer  "candidates_count",   default: 0
-    t.datetime "posting_time"
-    t.integer  "user_id"
-    t.index ["company_id"], name: "index_jobs_on_company_id", using: :btree
-    t.index ["deleted_at"], name: "index_jobs_on_deleted_at", using: :btree
-    t.index ["team_id"], name: "index_jobs_on_team_id", using: :btree
-    t.index ["title"], name: "index_jobs_on_title", using: :btree
-    t.index ["user_id"], name: "index_jobs_on_user_id", using: :btree
   end
 
   create_table "languages", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -609,23 +171,6 @@ ActiveRecord::Schema.define(version: 20170703035525) do
     t.index ["name"], name: "index_organizations_on_name", using: :btree
   end
 
-  create_table "permissions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "entry"
-    t.text     "optional",   limit: 65535
-    t.integer  "group_id"
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
-    t.index ["group_id"], name: "index_permissions_on_group_id", using: :btree
-  end
-
-  create_table "positions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "name"
-    t.integer  "company_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["company_id"], name: "index_positions_on_company_id", using: :btree
-  end
-
   create_table "posts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "title"
     t.text     "content",        limit: 65535
@@ -636,7 +181,6 @@ ActiveRecord::Schema.define(version: 20170703035525) do
     t.integer  "postable_id"
     t.datetime "created_at",                               null: false
     t.datetime "updated_at",                               null: false
-    t.string   "image"
     t.index ["postable_type", "postable_id"], name: "index_posts_on_postable_type_and_postable_id", using: :btree
   end
 
@@ -644,18 +188,6 @@ ActiveRecord::Schema.define(version: 20170703035525) do
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "share_jobs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "user_id"
-    t.integer  "job_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
-    t.integer  "shareable_id"
-    t.string   "shareable_type"
-    t.index ["job_id"], name: "index_share_jobs_on_job_id", using: :btree
-    t.index ["user_id", "job_id"], name: "index_share_jobs_on_user_id_and_job_id", unique: true, using: :btree
-    t.index ["user_id"], name: "index_share_jobs_on_user_id", using: :btree
   end
 
   create_table "skill_users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -710,25 +242,6 @@ ActiveRecord::Schema.define(version: 20170703035525) do
     t.index ["name"], name: "index_tags_on_name", unique: true, using: :btree
   end
 
-  create_table "team_introductions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "team_target_id"
-    t.string   "team_target_type"
-    t.string   "title"
-    t.text     "content",          limit: 65535
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
-    t.index ["team_target_id"], name: "index_team_introductions_on_team_target_id", using: :btree
-    t.index ["team_target_type"], name: "index_team_introductions_on_team_target_type", using: :btree
-  end
-
-  create_table "teams", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "company_id"
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["company_id"], name: "index_teams_on_company_id", using: :btree
-  end
-
   create_table "user_educations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "major"
     t.date     "graduation"
@@ -739,18 +252,6 @@ ActiveRecord::Schema.define(version: 20170703035525) do
     t.integer  "school_id"
     t.index ["school_id"], name: "index_user_educations_on_school_id", using: :btree
     t.index ["user_id"], name: "index_user_educations_on_user_id", using: :btree
-  end
-
-  create_table "user_groups", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "user_id"
-    t.integer  "group_id"
-    t.integer  "position_id"
-    t.boolean  "is_default_group"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
-    t.index ["group_id"], name: "index_user_groups_on_group_id", using: :btree
-    t.index ["position_id"], name: "index_user_groups_on_position_id", using: :btree
-    t.index ["user_id"], name: "index_user_groups_on_user_id", using: :btree
   end
 
   create_table "user_languages", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -824,11 +325,9 @@ ActiveRecord::Schema.define(version: 20170703035525) do
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
     t.string   "name"
-    t.integer  "education_status",       default: 1
     t.integer  "cover_image_id"
     t.integer  "avatar_id"
     t.string   "provider"
-    t.integer  "company_id"
     t.index ["avatar_id"], name: "index_users_on_avatar_id", using: :btree
     t.index ["cover_image_id"], name: "index_users_on_cover_image_id", using: :btree
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
@@ -839,48 +338,13 @@ ActiveRecord::Schema.define(version: 20170703035525) do
   add_foreign_key "certificates", "users"
   add_foreign_key "comments", "posts"
   add_foreign_key "comments", "users"
-  add_foreign_key "company_industries", "companies"
-  add_foreign_key "company_industries", "industries"
-  add_foreign_key "education_comments", "users"
-  add_foreign_key "education_course_members", "education_courses", column: "course_id"
-  add_foreign_key "education_course_members", "users"
-  add_foreign_key "education_courses", "education_trainings", column: "training_id"
-  add_foreign_key "education_permissions", "education_groups", column: "group_id"
-  add_foreign_key "education_posts", "education_categories", column: "category_id"
-  add_foreign_key "education_posts", "users"
-  add_foreign_key "education_program_members", "education_learning_programs", column: "learning_program_id"
-  add_foreign_key "education_program_members", "users"
-  add_foreign_key "education_project_members", "education_projects", column: "project_id"
-  add_foreign_key "education_project_members", "users"
-  add_foreign_key "education_project_techniques", "education_projects", column: "project_id"
-  add_foreign_key "education_project_techniques", "education_techniques", column: "technique_id"
-  add_foreign_key "education_rates", "users"
-  add_foreign_key "education_socials", "users"
-  add_foreign_key "education_training_techniques", "education_techniques", column: "technique_id"
-  add_foreign_key "education_training_techniques", "education_trainings", column: "training_id"
-  add_foreign_key "education_user_groups", "education_groups", column: "group_id"
-  add_foreign_key "education_user_groups", "users"
-  add_foreign_key "groups", "companies"
   add_foreign_key "info_users", "users"
-  add_foreign_key "job_hiring_types", "hiring_types"
-  add_foreign_key "job_hiring_types", "jobs"
-  add_foreign_key "job_teams", "jobs"
-  add_foreign_key "job_teams", "teams"
-  add_foreign_key "jobs", "teams"
-  add_foreign_key "jobs", "users"
   add_foreign_key "likes", "posts"
   add_foreign_key "likes", "users"
   add_foreign_key "messages", "chat_rooms"
   add_foreign_key "messages", "users"
-  add_foreign_key "permissions", "groups"
-  add_foreign_key "positions", "companies"
-  add_foreign_key "share_jobs", "jobs"
-  add_foreign_key "share_jobs", "users"
   add_foreign_key "user_educations", "schools"
   add_foreign_key "user_educations", "users"
-  add_foreign_key "user_groups", "groups"
-  add_foreign_key "user_groups", "positions"
-  add_foreign_key "user_groups", "users"
   add_foreign_key "user_languages", "languages"
   add_foreign_key "user_languages", "users"
   add_foreign_key "user_links", "users"
