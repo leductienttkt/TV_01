@@ -26,7 +26,7 @@ module Fcsp
     config.autoload_paths += Dir["#{config.root}/app/view_objects/**/"]
 
     config.to_prepare do
-      Devise::SessionsController.layout "education/layouts/application"
+      Devise::SessionsController.layout "layouts/application"
     end
 
     config.time_zone = "Bangkok"
